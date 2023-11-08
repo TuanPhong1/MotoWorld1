@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">MotoWorld</string>
+    <string name="screen1">Nền tảng đáng tin cậy</string>
+    <string name="screen2">Tiện lợi dễ sử dụng</string>
+    <string name="screen3">Đa dạng dịch vụ</string>
+    <string name="screen1desc">Kết nối cộng đồng mua bán xe bằng giao dịch tin cậy và chất lượng</string>
+    <string name="screen2desc">Thao tác đơn giản cho trải nghiệm mua bán dễ dàng </string>
+    <string name="screen3desc">Nâng cao tiện ích cho người tham gia giao thông</string>
+    <string name="startDesc">Create a long video or shorts and upload on youtube. Interact with your subscribers on youtube live.</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
