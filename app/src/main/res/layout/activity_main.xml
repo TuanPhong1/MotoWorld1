@@ -34,5 +34,6 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Đã cập nhật"/>
+        android:text="Đã cập nhật"
+        android:textColor="#8962f7"/>
 </RelativeLayout>
