@@ -34,7 +34,7 @@ AnimatedBottomBar bottomBar;
             public void onTabSelected(int i, @Nullable AnimatedBottomBar.Tab tab, int i1, @NonNull AnimatedBottomBar.Tab tab1) {
                 if(tab1.getId() == R.id.home){
                     replace(new HomeFragment());
-                }else if (tab1.getId() == R.id.shop){
+                }else if (tab1.getId() == R.id.list){
                     replace(new ShopFragment());
                 } else if (tab1.getId() == R.id.fab) {
                     replace(new StoryFragment());

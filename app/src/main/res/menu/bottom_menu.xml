@@ -6,9 +6,9 @@
     android:title="Home"
     android:icon="@drawable/baseline_home_24"/>
     <item
-        android:id="@+id/shop"
-        android:title="Shop"
-        android:icon="@drawable/baseline_add_business_24"/>
+        android:id="@+id/list"
+        android:title="List"
+        android:icon="@drawable/baseline_format_list_bulleted_24"/>
     <item
         android:id="@+id/fab"
         android:title="Story"

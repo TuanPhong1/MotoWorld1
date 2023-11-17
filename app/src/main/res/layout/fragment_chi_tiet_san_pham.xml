@@ -3,11 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Fragment.ShopFragment">
+    tools:context=".Fragment.ChiTietSanPhamFragment">
 
-   <ListView
-       android:layout_width="match_parent"
-       android:layout_height="match_parent"
-       android:id="@+id/lv_listsp"/>
+
 
 </FrameLayout>

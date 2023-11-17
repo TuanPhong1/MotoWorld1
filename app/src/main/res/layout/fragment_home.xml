@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.HomeFragment"
-    android:background="#F5F0FF"
+    android:background="#FFFFFF"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -32,47 +32,33 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hãng Xe Phổ biến"
+        android:layout_margin="5dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#500101"/>
+
     <androidx.viewpager.widget.ViewPager
         android:id="@+id/Viewpager"
         android:layout_width="match_parent"
         android:layout_height="215dp"
         tools:ignore="SpeakableTextPresentCheck" />
 
-    <LinearLayout
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Xe Bán Chạy Nhất"
+        android:layout_margin="5dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:textColor="#500101"/>
+
+    <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="horizontal"
-        android:layout_margin="15dp">
-
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/select_all"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/white_background" />
-
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/select_4"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/white_background" />
-
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/select_2"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/white_background" />
-
-        <ImageView
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:src="@drawable/select_3"
-            android:layout_marginLeft="20dp"
-            android:background="@drawable/white_background" />
-
-
-    </LinearLayout>
+        android:id="@+id/rcv_danhsachsanpham"/>
 
 </LinearLayout>

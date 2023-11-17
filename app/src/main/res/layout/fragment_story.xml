@@ -5,11 +5,29 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.StoryFragment">
 
-    <TextView
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/myToolbar"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="story"
-        android:textSize="40dp"
-        android:gravity="center"/>
+        android:layout_height="80dp"
+        android:background="#0BB6A6"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar" >
+
+        <EditText
+            android:id="@+id/edtsearch"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_margin="25dp"
+            android:background="@drawable/white_background"
+            android:drawableStart="@drawable/baseline_search_24"
+            android:drawablePadding="8dp"
+            android:ems="10"
+            android:hint="Search..."
+            android:inputType="textPersonName"
+            android:textColorHint="#0BB6A6"
+            android:textStyle="bold"
+            tools:ignore="TouchTargetSizeCheck" />
+
+    </androidx.appcompat.widget.Toolbar>
 
 </FrameLayout>
