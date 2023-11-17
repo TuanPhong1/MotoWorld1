@@ -31,4 +31,8 @@
         app:abb_indicatorColor="#10C8B7"
         app:abb_animationInterpolator="@android:anim/overshoot_interpolator"
         app:abb_animationDuration="600"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="Đã cập nhật"/>
 </RelativeLayout>
