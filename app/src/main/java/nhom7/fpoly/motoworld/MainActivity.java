@@ -7,9 +7,14 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.animation.Animation;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
+import nhom7.fpoly.motoworld.Fragment.ChiTietSanPhamFragment;
 import nhom7.fpoly.motoworld.Fragment.HomeFragment;
 import nhom7.fpoly.motoworld.Fragment.PersonFragment;
 import nhom7.fpoly.motoworld.Fragment.SettingFragment;
@@ -19,44 +24,44 @@ import nl.joery.animatedbottombar.AnimatedBottomBar;
 
 
     public class MainActivity extends AppCompatActivity {
-AnimatedBottomBar bottomBar;
+BottomNavigationView bottomBar;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        bottomBar = findViewById(R.id.bottom_bar);
+        bottomBar = findViewById(R.id.bottom_nav);
 
 
         replace(new HomeFragment());
 
-        bottomBar.setOnTabSelectListener(new AnimatedBottomBar.OnTabSelectListener() {
-            @Override
-            public void onTabSelected(int i, @Nullable AnimatedBottomBar.Tab tab, int i1, @NonNull AnimatedBottomBar.Tab tab1) {
-                if(tab1.getId() == R.id.home){
-                    replace(new HomeFragment());
-                }else if (tab1.getId() == R.id.list){
-                    replace(new ShopFragment());
-                } else if (tab1.getId() == R.id.fab) {
-                    replace(new StoryFragment());
-                } else if (tab1.getId() == R.id.person) {
-                    replace(new PersonFragment());
-                }else if (tab1.getId() == R.id.setting){
-                    replace(new SettingFragment());
-                }
-
-            }
-
-            @Override
-            public void onTabReselected(int i, @NonNull AnimatedBottomBar.Tab tab) {
-
-            }
-        });
+bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+    @Override
+    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId() == R.id.home){
+            HomeFragment homeFragment =new HomeFragment();
+            replace(homeFragment);
+        } else if (item.getItemId() == R.id.list) {
+            ShopFragment shopFragment = new ShopFragment();
+            replace(shopFragment);
+        }else if (item.getItemId() == R.id.fab) {
+            StoryFragment storyFragment = new StoryFragment();
+            replace(storyFragment);
+        }else if (item.getItemId() == R.id.person) {
+            PersonFragment personFragment = new PersonFragment();
+            replace(personFragment);
+        }else if (item.getItemId() == R.id.setting) {
+            SettingFragment settingFragment = new SettingFragment();
+            replace(settingFragment);
+        }
+        return true;
+    }
+});
 
     }
 
     private void replace(Fragment fragment){
         FragmentTransaction transaction = getSupportFragmentManager().beginTransaction();
-        transaction.replace(R.id.framelayout,fragment);
+        transaction.replace(R.id.frmbottom,fragment);
         transaction.commit();
     }
 }

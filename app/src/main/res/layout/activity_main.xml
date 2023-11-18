@@ -1,39 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:orientation="vertical"
     tools:context=".MainActivity">
 
-
     <FrameLayout
-        android:id="@+id/framelayout"
+        android:id="@+id/frmbottom"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#fff" />
+        android:layout_weight="1"/>
 
-    <nl.joery.animatedbottombar.AnimatedBottomBar
-        android:id="@+id/bottom_bar"
-        android:background="#ffffff"
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:abb_selectedTabType="text"
-        app:abb_indicatorAppearance="round"
-        app:abb_indicatorMargin="16dp"
-        app:abb_indicatorHeight="4dp"
-        app:abb_selectedIndex="0"
-        android:layout_alignParentBottom="true"
-        app:abb_tabs="@menu/bottom_menu"
-        app:abb_tabColor="@color/teal_700"
-        app:abb_tabColorSelected="@color/teal_700"
-        app:abb_indicatorColor="#10C8B7"
-        app:abb_animationInterpolator="@android:anim/overshoot_interpolator"
-        app:abb_animationDuration="600"/>
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="Đã cập nhật"
-        android:textColor="#8962f7"/>
-</RelativeLayout>
+        android:id="@+id/bottom_nav"
+        app:menu="@menu/bottom_menu"
+        android:background="#009688"
+        app:itemTextColor="@color/white"
+        app:itemIconTint="@color/white"
+        app:labelVisibilityMode="selected"
+        />
+</LinearLayout>
