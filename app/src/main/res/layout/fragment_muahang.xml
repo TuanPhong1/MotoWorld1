@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Fragment.MuaHangFragment">
+
+   <androidx.appcompat.widget.Toolbar
+       android:id="@+id/myToolbar"
+       android:layout_width="match_parent"
+       android:layout_height="80dp"
+       android:background="#0BB6A6"
+       android:elevation="4dp"
+       android:theme="@style/ThemeOverlay.AppCompat.ActionBar" >
+
+      <androidx.appcompat.widget.SearchView
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:layout_marginTop="16dp"
+          android:layout_marginEnd="12dp"
+          android:layout_marginStart="12dp"
+          android:id="@+id/search"
+          android:focusable="false"
+          android:background="@drawable/white_background"/>
+
+   </androidx.appcompat.widget.Toolbar>
+
+   <androidx.recyclerview.widget.RecyclerView
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:layout_marginTop="80dp"
+       android:id="@+id/rcv_listsp"/>
+
+   <com.google.android.material.floatingactionbutton.FloatingActionButton
+       android:id="@+id/fabMuaHang"
+       android:layout_width="wrap_content"
+       android:layout_height="wrap_content"
+       android:layout_gravity="bottom|right"
+       android:layout_margin="10dp"
+       android:backgroundTint="#009688"
+       android:src="@drawable/baseline_add_24"
+       tools:ignore="SpeakableTextPresentCheck" />
+</FrameLayout>

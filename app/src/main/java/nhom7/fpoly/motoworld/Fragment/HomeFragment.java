@@ -1,39 +1,54 @@
 package nhom7.fpoly.motoworld.Fragment;
 
-import android.content.Context;
 import android.os.Bundle;
-
-import androidx.fragment.app.Fragment;
-import androidx.viewpager.widget.ViewPager;
-
 import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.viewpager.widget.ViewPager;
+
+import java.util.ArrayList;
+
+import nhom7.fpoly.motoworld.Adapter.SanPhamAdapter;
 import nhom7.fpoly.motoworld.Adapter.slideshowAdapter;
-import nhom7.fpoly.motoworld.R;
+import nhom7.fpoly.motoworld.Dao.SanphamDao;
+import nhom7.fpoly.motoworld.Model.Sanpham;
+import nhom7.fpoly.motoworld.databinding.FragmentHomeBinding;
 
 
 public class HomeFragment extends Fragment {
 
-private ViewPager viewPager;
 private slideshowAdapter adapter;
 private Handler handler;
 private int currentPage =0;
+
+ArrayList<Sanpham> list;
+SanPhamAdapter sanPhamAdapter;
+
+
+MuaHangFragment muaHangFragment;
+
+SanphamDao dao;
+private FragmentHomeBinding binding;
+private View view;
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view = inflater.inflate(R.layout.fragment_home, container, false);
-
-        viewPager = view.findViewById(R.id.Viewpager);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        view = binding.getRoot();
         adapter = new slideshowAdapter(requireContext());
-        viewPager.setAdapter(adapter);
+        binding.Viewpager.setAdapter(adapter);
+
+        loadata();
 
         handler = new Handler();
-        viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
+        binding.Viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
             @Override
             public void onPageScrolled(int position, float positionOffset, int positionOffsetPixels) {
 
@@ -61,9 +76,18 @@ private int currentPage =0;
                 }else{
                     currentPage ++;
                 }
-                viewPager.setCurrentItem(currentPage,true);
+                binding.Viewpager.setCurrentItem(currentPage,true);
                 startslideshow();
             }
         },2000);
+    }
+    public void loadata(){
+        list = new ArrayList<>();
+        dao = new SanphamDao(getActivity());
+        list = (ArrayList<Sanpham>) dao.getAll();
+        GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
+        binding.rcvDanhsachsp.setLayoutManager(gridLayoutManager);
+        sanPhamAdapter = new SanPhamAdapter(getActivity(),list);
+        binding.rcvDanhsachsp.setAdapter(sanPhamAdapter);
     }
 }

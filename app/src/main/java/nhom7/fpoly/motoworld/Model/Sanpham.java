@@ -2,17 +2,20 @@ package nhom7.fpoly.motoworld.Model;
 
 public class Sanpham {
     public int masp, mahang, gia, namsx, trangthai;
-    public String tensp, loaixe, mauxe, dongco;
+    public String tensp, loaixe, mauxe, dongco,image;
 
     public Sanpham() {
     }
 
-    public Sanpham(int masp, int mahang, int gia, int namsx, int trangthai, String tensp, String loaixe, String mauxe, String dongco) {
+
+
+    public Sanpham(int masp, int mahang, int gia, int namsx, int trangthai, String image, String tensp, String loaixe, String mauxe, String dongco) {
         this.masp = masp;
         this.mahang = mahang;
         this.gia = gia;
         this.namsx = namsx;
         this.trangthai = trangthai;
+        this.image = image;
         this.tensp = tensp;
         this.loaixe = loaixe;
         this.mauxe = mauxe;
@@ -57,6 +60,14 @@ public class Sanpham {
 
     public void setTrangthai(int trangthai) {
         this.trangthai = trangthai;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 
     public String getTensp() {

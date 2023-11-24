@@ -1,26 +1,20 @@
     package nhom7.fpoly.motoworld;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
+    import android.os.Bundle;
+    import android.view.MenuItem;
 
-import android.os.Bundle;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.animation.Animation;
+    import androidx.annotation.NonNull;
+    import androidx.appcompat.app.AppCompatActivity;
+    import androidx.fragment.app.Fragment;
+    import androidx.fragment.app.FragmentTransaction;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.navigation.NavigationBarView;
+    import com.google.android.material.bottomnavigation.BottomNavigationView;
+    import com.google.android.material.navigation.NavigationBarView;
 
-import nhom7.fpoly.motoworld.Fragment.ChiTietSanPhamFragment;
-import nhom7.fpoly.motoworld.Fragment.HomeFragment;
-import nhom7.fpoly.motoworld.Fragment.PersonFragment;
-import nhom7.fpoly.motoworld.Fragment.SettingFragment;
-import nhom7.fpoly.motoworld.Fragment.ShopFragment;
-import nhom7.fpoly.motoworld.Fragment.StoryFragment;
-import nl.joery.animatedbottombar.AnimatedBottomBar;
+    import nhom7.fpoly.motoworld.Fragment.DangtinFragment;
+    import nhom7.fpoly.motoworld.Fragment.HomeFragment;
+    import nhom7.fpoly.motoworld.Fragment.MuaHangFragment;
+    import nhom7.fpoly.motoworld.Fragment.PersonFragment;
 
 
     public class MainActivity extends AppCompatActivity {
@@ -41,17 +35,14 @@ bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener
             HomeFragment homeFragment =new HomeFragment();
             replace(homeFragment);
         } else if (item.getItemId() == R.id.list) {
-            ShopFragment shopFragment = new ShopFragment();
-            replace(shopFragment);
+            MuaHangFragment muaHangFragment = new MuaHangFragment();
+            replace(muaHangFragment);
         }else if (item.getItemId() == R.id.fab) {
-            StoryFragment storyFragment = new StoryFragment();
-            replace(storyFragment);
+            DangtinFragment dangtinFragment = new DangtinFragment();
+            replace(dangtinFragment);
         }else if (item.getItemId() == R.id.person) {
             PersonFragment personFragment = new PersonFragment();
             replace(personFragment);
-        }else if (item.getItemId() == R.id.setting) {
-            SettingFragment settingFragment = new SettingFragment();
-            replace(settingFragment);
         }
         return true;
     }

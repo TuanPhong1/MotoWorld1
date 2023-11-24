@@ -20,19 +20,6 @@ public class SanphamDao {
         DbHelper dbHelper =new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
-//    public ArrayList<Sanpham> getDSSanPham(){
-//        ArrayList<Sanpham> list = new ArrayList<>();
-//        SQLiteDatabase sqLiteDatabase = dbHelper.getReadableDatabase();
-//
-//        Cursor cursor = sqLiteDatabase.rawQuery(" select sp.masp,hx.mahang,sp.gia,sp.namsx,sp.trangthai,sp.tensp,sp.loaixe,sp.mauxe,sp.dongco from SANPHAM sp,HANGXE hx where sp.mahang = hx.mahang", null);
-//        if (cursor.getCount() != 0){
-//            cursor.moveToFirst();
-//            do
-//                list.add(new Sanpham(cursor.getInt(0), cursor.getInt(1), cursor.getInt(2), cursor.getInt(3),cursor.getInt(4),cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8)));
-//            while (cursor.moveToNext());
-//        }
-//        return list;
-//    }
 
     public long insert(Sanpham obj){
         ContentValues values = new ContentValues();
@@ -44,6 +31,7 @@ public class SanphamDao {
         values.put("mauxe",obj.getMauxe());
         values.put("namsx",obj.getNamsx());
         values.put("dongco",obj.getDongco());
+        values.put("images",obj.getImage());
 //        values.put("trangthai",obj.getTrangthai());
         return db.insert("SANPHAM",null,values);
     }
@@ -57,6 +45,7 @@ public class SanphamDao {
         values.put("mauxe",obj.getMauxe());
         values.put("namsx",obj.getNamsx());
         values.put("dongco",obj.getDongco());
+        values.put("images",obj.getImage());
 //        values.put("trangthai",obj.getTrangthai());
         return db.update("SANPHAM",values,"masp=?",new String[]{String.valueOf(obj.getMasp())});
     }
@@ -76,6 +65,7 @@ public class SanphamDao {
             sp.setLoaixe(c.getString(c.getColumnIndex("loaixe")));
             sp.setMauxe(c.getString(c.getColumnIndex("mauxe")));
             sp.setNamsx(c.getInt(c.getColumnIndex("namsx")));
+            sp.setImage(c.getString(c.getColumnIndex("images")));
             sp.setDongco(c.getString(c.getColumnIndex("dongco")));
 //            sp.setTrangthai(c.getInt(c.getColumnIndex("trangthai")));
             list.add(sp);

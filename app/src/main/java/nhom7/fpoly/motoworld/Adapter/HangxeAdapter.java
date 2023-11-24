@@ -15,9 +15,7 @@ import androidx.annotation.Nullable;
 import java.util.List;
 
 import nhom7.fpoly.motoworld.Fragment.HangxeFragment;
-import nhom7.fpoly.motoworld.Fragment.ShopFragment;
 import nhom7.fpoly.motoworld.Model.Hangxe;
-import nhom7.fpoly.motoworld.Model.Sanpham;
 import nhom7.fpoly.motoworld.R;
 
 public class HangxeAdapter extends ArrayAdapter<Hangxe> {
