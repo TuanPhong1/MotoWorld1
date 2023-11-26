@@ -87,7 +87,7 @@ private View view;
         list = (ArrayList<Sanpham>) dao.getAll();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         binding.rcvDanhsachsp.setLayoutManager(gridLayoutManager);
-        sanPhamAdapter = new SanPhamAdapter(getActivity(),list);
+        sanPhamAdapter = new SanPhamAdapter(getContext(),list,getActivity());
         binding.rcvDanhsachsp.setAdapter(sanPhamAdapter);
     }
 }

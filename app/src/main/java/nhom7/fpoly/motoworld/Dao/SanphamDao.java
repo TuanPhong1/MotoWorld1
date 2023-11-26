@@ -15,17 +15,19 @@ import nhom7.fpoly.motoworld.Model.Sanpham;
 public class SanphamDao {
     SQLiteDatabase db;
     DbHelper dbHelper;
+    Context context;
 
     public SanphamDao(Context context) {
-        DbHelper dbHelper =new DbHelper(context);
+        this.context = context;
+        dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 
-    public long insert(Sanpham obj){
+    public long insert(Sanpham obj,int matk){
         ContentValues values = new ContentValues();
-        values.put("masp",obj.getMasp());
         values.put("mahang",obj.getMahang());
         values.put("tensp",obj.getTensp());
+        values.put("matk",matk);
         values.put("gia",obj.getGia());
         values.put("loaixe",obj.getLoaixe());
         values.put("mauxe",obj.getMauxe());
@@ -35,11 +37,11 @@ public class SanphamDao {
 //        values.put("trangthai",obj.getTrangthai());
         return db.insert("SANPHAM",null,values);
     }
-    public int update(Sanpham obj){
+    public int update(Sanpham obj,int matk){
         ContentValues values = new ContentValues();
-        values.put("masp",obj.getMasp());
         values.put("mahang",obj.getMahang());
         values.put("tensp",obj.getTensp());
+        values.put("matk",matk);
         values.put("gia",obj.getGia());
         values.put("loaixe",obj.getLoaixe());
         values.put("mauxe",obj.getMauxe());
@@ -72,7 +74,7 @@ public class SanphamDao {
         }
         return list;
     }
-    public List<Sanpham>   getAll(){
+    public List<Sanpham> getAll(){
         String sql = "select * from SANPHAM";
         return getdata(sql);
     }
@@ -81,4 +83,7 @@ public class SanphamDao {
         List<Sanpham> list = getdata(sql,id);
         return list.get(0);
     }
+
+
+
 }

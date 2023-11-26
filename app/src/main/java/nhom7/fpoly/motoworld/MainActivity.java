@@ -25,7 +25,6 @@ BottomNavigationView bottomBar;
         setContentView(R.layout.activity_main);
         bottomBar = findViewById(R.id.bottom_nav);
 
-
         replace(new HomeFragment());
 
 bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
@@ -44,6 +43,8 @@ bottomBar.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener
             PersonFragment personFragment = new PersonFragment();
             replace(personFragment);
         }
+
+
         return true;
     }
 });
