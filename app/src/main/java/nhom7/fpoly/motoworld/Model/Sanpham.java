@@ -1,25 +1,27 @@
 package nhom7.fpoly.motoworld.Model;
 
-public class Sanpham {
-    public int masp, mahang, gia, namsx, trangthai;
+import java.io.Serializable;
+
+public class Sanpham implements Serializable {
+    public int masp, mahang, gia, namsx, trangthai,matk;
     public String tensp, loaixe, mauxe, dongco,image;
 
     public Sanpham() {
     }
 
 
-
-    public Sanpham(int masp, int mahang, int gia, int namsx, int trangthai, String image, String tensp, String loaixe, String mauxe, String dongco) {
+    public Sanpham(int masp, int mahang, int gia, int namsx, int trangthai, int matk, String tensp, String loaixe, String mauxe, String dongco, String image) {
         this.masp = masp;
         this.mahang = mahang;
         this.gia = gia;
         this.namsx = namsx;
         this.trangthai = trangthai;
-        this.image = image;
+        this.matk = matk;
         this.tensp = tensp;
         this.loaixe = loaixe;
         this.mauxe = mauxe;
         this.dongco = dongco;
+        this.image = image;
     }
 
     public int getMasp() {
@@ -62,12 +64,12 @@ public class Sanpham {
         this.trangthai = trangthai;
     }
 
-    public String getImage() {
-        return image;
+    public int getMatk() {
+        return matk;
     }
 
-    public void setImage(String image) {
-        this.image = image;
+    public void setMatk(int matk) {
+        this.matk = matk;
     }
 
     public String getTensp() {
@@ -100,5 +102,13 @@ public class Sanpham {
 
     public void setDongco(String dongco) {
         this.dongco = dongco;
+    }
+
+    public String getImage() {
+        return image;
+    }
+
+    public void setImage(String image) {
+        this.image = image;
     }
 }

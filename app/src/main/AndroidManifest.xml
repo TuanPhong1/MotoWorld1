@@ -2,11 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
-<!--    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />-->
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-
-
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -18,7 +16,18 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MotoWorld"
         tools:targetApi="31">
-
+        <activity
+            android:name=".TaiKhoan.SuDung"
+            android:exported="false" />
+        <activity
+            android:name=".TaiKhoan.XeYeuThich"
+            android:exported="false" />
+        <activity
+            android:name=".TaiKhoan.XeDaMua"
+            android:exported="false" />
+        <activity
+            android:name=".TaiKhoan.XeDangBan"
+            android:exported="false" />
         <activity
             android:name=".Onboarding.GetStarted"
             android:exported="false" />
@@ -26,10 +35,10 @@
             android:name=".Onboarding.Onboarding_Activity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ManHinhChao"
             android:exported="false" />
         <activity
-            android:name=".ManHinhChao"
+            android:name=".MainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -41,8 +50,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
-
 
 </manifest>

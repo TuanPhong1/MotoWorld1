@@ -6,7 +6,6 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
@@ -20,28 +19,17 @@ import java.util.ArrayList;
 
 import nhom7.fpoly.motoworld.Dao.HangxeDao;
 import nhom7.fpoly.motoworld.Fragment.ChiTietSanPhamFragment;
-import nhom7.fpoly.motoworld.Fragment.MuaHangFragment;
 import nhom7.fpoly.motoworld.Model.Hangxe;
 import nhom7.fpoly.motoworld.Model.Sanpham;
 import nhom7.fpoly.motoworld.R;
-import nhom7.fpoly.motoworld.databinding.ItemSanphamBinding;
+import nhom7.fpoly.motoworld.databinding.ItemFavoriteBinding;
 
-public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHolder> {
-
-    private Context context;
+public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
+    Context context;
     private ArrayList<Sanpham> list;
     private Activity activity;
-    HangxeDao hangxeDao;
-    private MuaHangFragment fragment;
 
-
-    public void setSearchList(ArrayList<Sanpham> list) {
-        this.list = list;
-        notifyDataSetChanged();
-    }
-
-
-    public SanPhamAdapter(Context context, ArrayList<Sanpham> list, Activity activity) {
+    public FavoriteAdapter(Context context, ArrayList<Sanpham> list, Activity activity) {
         this.context = context;
         this.list = list;
         this.activity = activity;
@@ -50,7 +38,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemSanphamBinding binding = ItemSanphamBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        ItemFavoriteBinding binding = ItemFavoriteBinding.inflate(LayoutInflater.from(parent.getContext()),parent,false);
         return new ViewHolder(binding);
     }
 
@@ -63,39 +51,15 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         //Lấy dữ liệu ảnh lên recyclerview
         Uri imagesUri = Uri.parse(sp.getImage());
         Log.d("tag", "onBindViewHolder: " + imagesUri);
-        holder.binding.listImage1.setImageURI(imagesUri);
+        holder.binding.imgFavorite.setImageURI(imagesUri);
 
+        holder.binding.tvTenfavorite.setText("TênSP:" + sp.getTensp());
 
-//        String imgName = sp.getImage();
-//        int resId = 0;
-//        if (imgName != null && !imgName.isEmpty()) {
-//            resId = ((Activity) context).getResources().getIdentifier(imgName, "drawable", ((Activity) context).getPackageName());
-//        }
-
-//        holder.binding.listImage1.setImageResource(resId);
-
-
-        holder.binding.tvTensp.setText("TênSP:" + sp.getTensp());
-
-        hangxeDao = new HangxeDao(context);
+        HangxeDao hangxeDao = new HangxeDao(context);
         Hangxe hangxe = hangxeDao.getID(String.valueOf(sp.getMahang()));
-        holder.binding.tvHangsp.setText("Hãng:" + String.valueOf(hangxe.getTenhang()));
+        holder.binding.tvHangfavorite.setText("Hãng:" + String.valueOf(hangxe.getTenhang()));
 
-        holder.binding.tvGiasp.setText("Giá:" + String.valueOf(sp.getGia()));
-        holder.binding.btnedit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-//                editFragment(sp,holder.itemView.getContext());
-
-            }
-        });
-        holder.binding.btndelete.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-
-            }
-        });
-
+        holder.binding.tvGiafavorite.setText("Giá:" + String.valueOf(sp.getGia()));
         holder.binding.cardviewsp.setOnClickListener(view -> {
             openFragment(sp,holder.itemView.getContext());
         });
@@ -103,21 +67,16 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
 
     @Override
     public int getItemCount() {
-        if (list != null) {
-            return list.size();
-        }
-        return 0;
+        return list.size();
     }
 
-    public static class ViewHolder extends RecyclerView.ViewHolder {
-        private final ItemSanphamBinding binding;
-
-        public ViewHolder(@NonNull ItemSanphamBinding binding) {
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        private ItemFavoriteBinding binding;
+        public ViewHolder(@NonNull ItemFavoriteBinding binding) {
             super(binding.getRoot());
             this.binding = binding;
         }
     }
-
     private void openFragment(final Sanpham sanPham, Context context) {
         if (context instanceof FragmentActivity) {
             FragmentActivity fragmentActivity = (FragmentActivity) context;
@@ -140,5 +99,4 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             }
         }
     }
-
 }
