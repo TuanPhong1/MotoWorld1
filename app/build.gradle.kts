@@ -43,8 +43,7 @@ dependencies {
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
-    implementation ("nl.joery.animatedbottombar:library:1.1.0")
     implementation ("com.google.android.gms:play-services-location:18.0.0")
-
+    implementation ("com.squareup.picasso:picasso:2.71828")
     implementation("com.github.bumptech.glide:glide:4.16.0")
 }

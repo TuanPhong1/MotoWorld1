@@ -8,45 +8,34 @@
     tools:context=".Fragment.ChiTietSanPhamFragment">
 
     <androidx.appcompat.widget.Toolbar
-        android:id="@+id/myToolbar"
+        android:id="@+id/Toolbar"
         android:layout_width="match_parent"
         android:layout_height="60dp"
         android:background="#0BB6A6"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
-        <ImageView
-            android:layout_width="40dp"
-            android:layout_height="35dp"
-            android:id="@+id/btnbackspct"
-            android:src="@drawable/baseline_arrow_back_24"/>
-
-        <TextView
+        <ImageButton
+            android:id="@+id/ImgButton_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Sản phẩm chi tiết"
-            android:textColor="#ffffff"
-            android:textStyle="bold"
-            android:textSize="20dp"/>
+            android:src="@drawable/baseline_favorite_border_24"
+            android:layout_marginLeft="110dp"
+            android:background="#03BCAA"/>
 
     </androidx.appcompat.widget.Toolbar>
 
-  <androidx.cardview.widget.CardView
-      android:layout_width="match_parent"
-      android:layout_height="260dp"
-      app:cardCornerRadius="15dp">
-      <ImageView
-          android:id="@+id/img_ctsp"
-          android:layout_width="410dp"
-          android:layout_height="265dp"
-          android:src="@drawable/img1" />
-  </androidx.cardview.widget.CardView>
+        <ImageView
+            android:id="@+id/img_ctsp"
+            android:layout_width="410dp"
+            android:layout_height="260dp"
+            android:src="@drawable/img1" />
 
     <TextView
         android:id="@+id/tv_tenspct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:textColor="@color/black"
         android:textSize="22dp"
         android:textStyle="bold" />
@@ -55,8 +44,8 @@
         android:id="@+id/tv_hangspct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginBottom="10dp"
+        android:layout_marginLeft="5dp"
+        android:layout_marginBottom="5dp"
         android:textColor="@color/black"
         android:textSize="22dp"
         android:textStyle="bold" />
@@ -65,17 +54,44 @@
         android:id="@+id/tv_giaspct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
+        android:layout_marginLeft="5dp"
         android:textColor="@color/black"
         android:textSize="22dp"
         android:textStyle="bold" />
 
-    <TextView
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="6dp"
-        android:text="_________________________________________________________________"
-        android:textStyle="bold" />
+        android:layout_height="100dp">
+
+        <ImageButton
+            android:id="@+id/ibNguoiDung"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_gravity="center"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvtentknd"
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Ten nguoi dung"
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="30dp"
+                android:text="Danh gia"
+                android:textSize="17dp" />
+        </LinearLayout>
+    </LinearLayout>
+
 
     <TextView
         android:layout_width="match_parent"
@@ -107,7 +123,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:id="@+id/tv_loaixespct"
-                android:layout_marginLeft="280dp"
+                android:layout_marginLeft="208dp"
                 android:textSize="18dp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -127,10 +143,10 @@
                 android:id="@+id/tv_namsxspct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="240dp"
+                android:layout_marginLeft="157dp"
                 android:textStyle="bold"
                 android:textSize="18dp"
-               />
+                />
         </LinearLayout>
         <LinearLayout
             android:layout_width="wrap_content"
@@ -148,7 +164,7 @@
                 android:id="@+id/tv_dongcospct"
                 android:layout_width="wrap_content"
                 android:layout_height="match_parent"
-                android:layout_marginLeft="275dp"
+                android:layout_marginLeft="200dp"
                 android:textSize="18dp"
                 android:textStyle="bold" />
         </LinearLayout>
@@ -167,30 +183,11 @@
                 android:id="@+id/tv_mausacspct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="285dp"
+                android:layout_marginLeft="200dp"
                 android:textStyle="bold"
                 android:textSize="18dp" />
         </LinearLayout>
-        <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="5dp"
-            android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:text="Trạng Thái" />
-            <TextView
-                android:id="@+id/tv_trangthaispct"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="180dp"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:textColor="#FF0000"/>
-        </LinearLayout>
+
 
         <androidx.appcompat.widget.AppCompatButton
             android:layout_width="200dp"
@@ -206,4 +203,7 @@
             />
 
     </LinearLayout>
+
+
+
 </LinearLayout>

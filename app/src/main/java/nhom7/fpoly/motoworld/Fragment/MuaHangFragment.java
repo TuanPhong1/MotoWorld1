@@ -76,7 +76,8 @@ public class MuaHangFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         binding.rcvListsp.setLayoutManager(gridLayoutManager);
 
-        adapter = new SanPhamAdapter(getContext(), list);
+        adapter = new SanPhamAdapter(getContext(), list, getActivity());
         binding.rcvListsp.setAdapter(adapter);
     }
+
 }
