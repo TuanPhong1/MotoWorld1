@@ -14,8 +14,9 @@ import nhom7.fpoly.motoworld.Model.TkNguoiDung;
 
 public class TkNguoiDungDao {
     SQLiteDatabase db;
+    DbHelper dbHelper;
     public TkNguoiDungDao(Context context) {
-        DbHelper dbHelper = new DbHelper(context);
+         dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 
@@ -43,7 +44,7 @@ public class TkNguoiDungDao {
     }
 
     public TkNguoiDung getID(String id) {
-        String sql = "SELECT * FROM taikhoanND WHERE matknd=?";
+        String sql = "SELECT * FROM TKNGUOIDUNG WHERE matk=?";
         List<TkNguoiDung> list = getData(sql, id);
         return list.get(0);
     }

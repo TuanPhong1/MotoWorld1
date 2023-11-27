@@ -24,6 +24,7 @@ import nhom7.fpoly.motoworld.Dao.SanphamDao;
 import nhom7.fpoly.motoworld.Dao.TkNguoiDungDao;
 import nhom7.fpoly.motoworld.Model.Hangxe;
 import nhom7.fpoly.motoworld.Model.Sanpham;
+import nhom7.fpoly.motoworld.Model.TkNguoiDung;
 import nhom7.fpoly.motoworld.R;
 import nhom7.fpoly.motoworld.databinding.FragmentChiTietSanPhamBinding;
 
@@ -76,21 +77,28 @@ private boolean isFavorite = false;
         Glide.with(requireContext()).load(item.getImage()).into(binding.imgCtsp);
 
         if(item!=null){
-            binding.tvTenspct.setText(item.getTensp());
+            binding.tvTenspct.setText("Xe: " + item.getTensp());
+
+            ndDao = new TkNguoiDungDao(getContext());
+            TkNguoiDung tkNguoiDung = ndDao.getID(String.valueOf(item.getMatk()));
+            Log.d("TAG","Tag" +item.getMatk()   );
+            binding.tvtentknd.setText(tkNguoiDung.getTaikhoan());
 
             HangxeDao hangxeDao = new HangxeDao(getContext());
             Hangxe hangxe = hangxeDao.getID(String.valueOf(item.getMahang()));
-            binding.tvHangspct.setText(String.valueOf(hangxe.getTenhang()));
+            binding.tvHangspct.setText(String.valueOf("Hãng: " + hangxe.getTenhang()));
 
-            binding.tvGiaspct.setText(String.valueOf(item.getGia()));
+            binding.tvGiaspct.setText(String.valueOf("Giá: " + item.getGia()));
             binding.tvLoaixespct.setText(item.getLoaixe());
             binding.tvNamsxspct.setText(String.valueOf(item.getNamsx()));
             binding.tvDongcospct.setText(item.getDongco());
             binding.tvMausacspct.setText(item.getMauxe());
+//            if(item.getTrangthai() == 1){
+//                binding.chkTrangthai.setChecked(true);
+//            }else{
+//                binding.chkTrangthai.setChecked(false);
+//            }
 
-//            ndDao = new TkNguoiDungDao(getContext());
-//            TkNguoiDung tkNguoiDung = ndDao.getID(String.valueOf(item.getMatk()));
-//
         }
 
 

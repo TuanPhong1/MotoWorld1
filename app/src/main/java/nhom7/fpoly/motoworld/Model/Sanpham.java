@@ -3,19 +3,18 @@ package nhom7.fpoly.motoworld.Model;
 import java.io.Serializable;
 
 public class Sanpham implements Serializable {
-    public int masp, mahang, gia, namsx, trangthai,matk;
+    public int masp, mahang, gia, namsx,matk;
     public String tensp, loaixe, mauxe, dongco,image;
 
     public Sanpham() {
     }
 
 
-    public Sanpham(int masp, int mahang, int gia, int namsx, int trangthai, int matk, String tensp, String loaixe, String mauxe, String dongco, String image) {
+    public Sanpham(int masp, int mahang, int gia, int namsx, int matk, String tensp, String loaixe, String mauxe, String dongco, String image) {
         this.masp = masp;
         this.mahang = mahang;
         this.gia = gia;
         this.namsx = namsx;
-        this.trangthai = trangthai;
         this.matk = matk;
         this.tensp = tensp;
         this.loaixe = loaixe;
@@ -56,13 +55,6 @@ public class Sanpham implements Serializable {
         this.namsx = namsx;
     }
 
-    public int getTrangthai() {
-        return trangthai;
-    }
-
-    public void setTrangthai(int trangthai) {
-        this.trangthai = trangthai;
-    }
 
     public int getMatk() {
         return matk;

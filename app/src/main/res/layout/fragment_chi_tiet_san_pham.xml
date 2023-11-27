@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     tools:context=".Fragment.ChiTietSanPhamFragment">
 
@@ -15,21 +14,21 @@
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar">
 
-        <ImageButton
+        <ImageView
             android:id="@+id/ImgButton_favorite"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:src="@drawable/baseline_favorite_border_24"
             android:layout_marginLeft="110dp"
-            android:background="#03BCAA"/>
+            android:background="#03BCAA"
+            android:src="@drawable/baseline_favorite_border_24" />
 
     </androidx.appcompat.widget.Toolbar>
 
-        <ImageView
-            android:id="@+id/img_ctsp"
-            android:layout_width="410dp"
-            android:layout_height="260dp"
-            android:src="@drawable/img1" />
+    <ImageView
+        android:id="@+id/img_ctsp"
+        android:layout_width="410dp"
+        android:layout_height="260dp"
+        android:src="@drawable/img1" />
 
     <TextView
         android:id="@+id/tv_tenspct"
@@ -112,21 +111,23 @@
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:orientation="horizontal">
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:textStyle="bold"
-                android:textSize="18dp"
-                android:text="Loại xe" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="Loại xe"
+                android:textSize="18dp"
+                android:textStyle="bold" />
+
+            <TextView
                 android:id="@+id/tv_loaixespct"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="208dp"
                 android:textSize="18dp"
                 android:textStyle="bold" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -139,26 +140,28 @@
                 android:text="Năm sản xuất"
                 android:textSize="18dp"
                 android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tv_namsxspct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="157dp"
-                android:textStyle="bold"
                 android:textSize="18dp"
-                />
+                android:textStyle="bold" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:text="Động cơ"
                 android:textSize="18dp"
-                android:text="Động cơ" />
+                android:textStyle="bold" />
 
             <TextView
                 android:id="@+id/tv_dongcospct"
@@ -168,42 +171,52 @@
                 android:textSize="18dp"
                 android:textStyle="bold" />
         </LinearLayout>
+
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_margin="5dp"
             android:orientation="horizontal">
+
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textStyle="bold"
+                android:text="Màu sắc"
                 android:textSize="18dp"
-                android:text="Màu sắc" />
+                android:textStyle="bold" />
+
             <TextView
                 android:id="@+id/tv_mausacspct"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="200dp"
-                android:textStyle="bold"
-                android:textSize="18dp" />
+                android:textSize="18dp"
+                android:textStyle="bold" />
         </LinearLayout>
+
+<!--        <CheckBox-->
+<!--            android:id="@+id/chkTrangthai"-->
+<!--            android:layout_width="wrap_content"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="Chưa bán"-->
+<!--            android:textColor="#FF0000"-->
+<!--            android:textSize="18dp"-->
+<!--            android:textStyle="bold"/>-->
 
 
         <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/btnbuy"
             android:layout_width="200dp"
             android:layout_height="60dp"
-            android:background="@drawable/white_background"
-            android:id="@+id/btnbuy"
+            android:layout_gravity="center"
             android:layout_margin="10dp"
+            android:background="@drawable/white_background"
             android:backgroundTint="#12B1A2"
             android:text="Mua hàng"
             android:textColor="#ffffff"
-            android:textSize="18dp"
-            android:layout_gravity="center"
-            />
+            android:textSize="18dp" />
 
     </LinearLayout>
-
 
 
 </LinearLayout>

@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public DbHelper(@Nullable Context context) {
-        super(context, "MotoWorlddd", null, 1);
+        super(context, "Motowoow", null, 1);
     }
 
     @Override
@@ -26,10 +26,6 @@ public class DbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(tbAdmin);
 
         sqLiteDatabase.execSQL("insert into HANGXE values(1,'Honda'),(2,'Ducati'),(3,'Yamaha'),(4,'Suzuki')");
-//        sqLiteDatabase.execSQL("insert into SANPHAM values(1,1,1,'Air Blade',35000000,'Xe Ga','Đen sẫm',2022,'150cc','img')," +
-//                "(2,3,1,'Wave alpha',20000000,'Xe Số','Xanh Đậm',2022,'110cc','img1')," +
-//                "(3,2,2,'Dream',15000000,'Xe Số','Trắng',2022,'110cc','img2')," +
-//                "(4,4,2,'Vario',40000000,'Xe Ga','Trắng',2022,'150cc','img3')");
         sqLiteDatabase.execSQL("insert into TKNGUOIDUNG values(1,'chien','123'),(2,'phong','123')");
         sqLiteDatabase.execSQL("insert into NGUOIDUNG values(1,'Nguyễn Minh Chiến','2004','Nam','0325555876','Thái Bình',1)");
         sqLiteDatabase.execSQL("insert into ADMIN values(1,'Nguyen Minh Chien','admin','admin'),(2,'Phạm Văn Phong','admin1','admin1'),(3,'Nguyễn Tuấn Phong','admin2','admin2')");
@@ -43,6 +39,7 @@ public class DbHelper extends SQLiteOpenHelper {
             sqLiteDatabase.execSQL("drop table if exists NGUOIDUNG");
             sqLiteDatabase.execSQL("drop table if exists TKNGUOIDUNG");
             sqLiteDatabase.execSQL("drop table if exists ADMIN");
+
         }
     }
 }

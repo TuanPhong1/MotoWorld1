@@ -7,11 +7,12 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
 
 import nhom7.fpoly.motoworld.Adapter.ViewPageAdapter;
-import nhom7.fpoly.motoworld.MainActivity;
+import nhom7.fpoly.motoworld.MainDangNhap;
 import nhom7.fpoly.motoworld.R;
 
 public class Onboarding_Activity extends AppCompatActivity {
@@ -84,7 +85,7 @@ public class Onboarding_Activity extends AppCompatActivity {
         skipButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i = new Intent(Onboarding_Activity.this, MainActivity.class);
+                Intent i = new Intent(Onboarding_Activity.this, MainDangNhap.class);
                 startActivity(i);
                 finish();
             }

@@ -82,60 +82,57 @@ public class DangtinFragment extends Fragment {
 
             }
         });
-        binding.btnDangtin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                String tensp = binding.edtTensp.getText().toString();
-                String giaspStr = binding.edtGiasp.getText().toString();
-                Integer giasp = Integer.parseInt(giaspStr);
-                String loaixe = binding.edtLoaixe.getText().toString();
-                String mausac = binding.edtMausac.getText().toString();
-                String dongco = binding.edtDongco.getText().toString();
-                String namsxStr = binding.edtNamsx.getText().toString();
-                Integer namsx = Integer.parseInt(namsxStr);
+        binding.btnDangtin.setOnClickListener(view -> {
+            String tensp = binding.edtTensp.getText().toString();
+            String giaspStr = binding.edtGiasp.getText().toString();
+            Integer giasp = Integer.parseInt(giaspStr);
+            String loaixe = binding.edtLoaixe.getText().toString();
+            String mausac = binding.edtMausac.getText().toString();
+            String dongco = binding.edtDongco.getText().toString();
+            String namsxStr = binding.edtNamsx.getText().toString();
+            Integer namsx = Integer.parseInt(namsxStr);
 
-                if (tensp.isEmpty() || loaixe.isEmpty() || mausac.isEmpty() || dongco.isEmpty()) {
-                    Toast.makeText(getActivity(), "Vui lòng nhập đúng trường dữ liệu!!!", Toast.LENGTH_SHORT).show();
-                } else if (giasp < 0) {
-                    Toast.makeText(getActivity(), "Giá sản phẩm phải lớn hơn 0", Toast.LENGTH_SHORT).show();
-                } else if (namsx < 1900 || namsx > 2040) {
-                    Toast.makeText(getActivity(), "Năm sản xuất không đúng", Toast.LENGTH_SHORT).show();
-                }
+            if (tensp.isEmpty() || loaixe.isEmpty() || mausac.isEmpty() || dongco.isEmpty()) {
+                Toast.makeText(getActivity(), "Vui lòng nhập đúng trường dữ liệu!!!", Toast.LENGTH_SHORT).show();
+            } else if (giasp < 0) {
+                Toast.makeText(getActivity(), "Giá sản phẩm phải lớn hơn 0", Toast.LENGTH_SHORT).show();
+            } else if (namsx < 1900 || namsx > 2040) {
+                Toast.makeText(getActivity(), "Năm sản xuất không đúng", Toast.LENGTH_SHORT).show();
+            }
 
-                item = new Sanpham();
-                item.setMahang(mahang);
-                item.setTensp(tensp);
-                item.setGia(giasp);
-                item.setLoaixe(loaixe);
-                item.setMauxe(mausac);
-                item.setDongco(dongco);
-                item.setNamsx(namsx);
+            item = new Sanpham();
+            item.setMahang(mahang);
+            item.setTensp(tensp);
+            item.setGia(giasp);
+            item.setLoaixe(loaixe);
+            item.setMauxe(mausac);
+            item.setDongco(dongco);
+            item.setNamsx(namsx);
 
-                String imagePath = getPathFromUri(selectUri);
-                Log.d("TAG", "onClick: " + imagePath);
-                item.setImage(imagePath);
+            String imagePath = getPathFromUri(selectUri);
+            Log.d("TAG", "onClick: " + imagePath);
+            item.setImage(imagePath);
 
-                //chuyển data imageview sang mảng byte[]
+            //chuyển data imageview sang mảng byte[]
 //                BitmapDrawable bitmapDrawable = (BitmapDrawable) binding.imgAnh.getDrawable();
 //                Bitmap bitmap = bitmapDrawable.getBitmap();
 //                ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
 //                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArray); //ép kiểu ảnh về png, độ phân giải ảnh mặc định 100 - cảng nhỏ hơn càng nét(1-100), dữ liệu truyền vào;
 //                byte[] hinhAnh = byteArray.toByteArray(); //mảng byte để chứa dữ liệu
 
-                SharedPreferences pref = getActivity().getSharedPreferences("USER_FILE",Context.MODE_PRIVATE);
-                String user = pref.getString("USERNAME","");
-                String pass = pref.getString("PASSWORD","");
+            SharedPreferences pref = getActivity().getSharedPreferences("USER_FILE",Context.MODE_PRIVATE);
+            String user = pref.getString("USERNAME","");
+            String pass = pref.getString("PASSWORD","");
 
-                TkNguoiDungDao tkDao = new TkNguoiDungDao(getActivity());
-                int matk = tkDao.getMatkndFromTkNguoiDung(user,pass);
-                Log.d("tk","tk=" +matk);
+            TkNguoiDungDao tkDao = new TkNguoiDungDao(getActivity());
+            int matk = tkDao.getMatkndFromTkNguoiDung(user,pass);
+            Log.d("tk","tk=" +matk);
 
-                long insert = dao.insert(item,matk);
-                if (insert > 0) {
-                    Toast.makeText(getActivity(), "Thêm sản phẩn thành công", Toast.LENGTH_SHORT).show();
-                } else {
-                    Toast.makeText(getActivity(), "Thêm sản phẩm thất bại", Toast.LENGTH_SHORT).show();
-                }
+            long insert = dao.insert(item,matk);
+            if (insert > 0) {
+                Toast.makeText(getActivity(), "Thêm sản phẩn thành công", Toast.LENGTH_SHORT).show();
+            } else {
+                Toast.makeText(getActivity(), "Thêm sản phẩm thất bại", Toast.LENGTH_SHORT).show();
             }
         });
 //        binding.btncamera.setOnClickListener(new View.OnClickListener() {

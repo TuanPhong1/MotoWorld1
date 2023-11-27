@@ -5,7 +5,9 @@ import android.os.Handler;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import androidx.appcompat.widget.SearchView;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.viewpager.widget.ViewPager;
@@ -46,6 +48,20 @@ private View view;
         binding.Viewpager.setAdapter(adapter);
 
         loadata();
+
+        binding.searchhome.clearFocus();
+        binding.searchhome.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+            @Override
+            public boolean onQueryTextSubmit(String query) {
+                return false;
+            }
+
+            @Override
+            public boolean onQueryTextChange(String newText) {
+                searchList(newText);
+                return true;
+            }
+        });
 
         handler = new Handler();
         binding.Viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -90,4 +106,18 @@ private View view;
         sanPhamAdapter = new SanPhamAdapter(getContext(),list,getActivity());
         binding.rcvDanhsachsp.setAdapter(sanPhamAdapter);
     }
+    private void searchList(String text) {
+        ArrayList<Sanpham> sanphamList = new ArrayList<>();
+        for (Sanpham sp : list) {
+            if (sp.getTensp().toLowerCase().contains(text.toLowerCase())) {
+                sanphamList.add(sp);
+            }
+        }
+        if (sanphamList.isEmpty()) {
+            Toast.makeText(getContext(), "Không tìm thấy sản phẩm", Toast.LENGTH_SHORT).show();
+        } else {
+            sanPhamAdapter.setSearchList(sanphamList);
+        }
+    }
+
 }

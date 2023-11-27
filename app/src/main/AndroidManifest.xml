@@ -16,7 +16,12 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.MotoWorld"
         tools:targetApi="31">
-
+        <activity
+            android:name=".MainDangKi"
+            android:exported="false" />
+        <activity
+            android:name=".MainDangNhap"
+            android:exported="false" />
         <activity
             android:name=".Onboarding.GetStarted"
             android:exported="false" />
@@ -24,10 +29,10 @@
             android:name=".Onboarding.Onboarding_Activity"
             android:exported="false" />
         <activity
-            android:name=".ManHinhChao"
+            android:name=".MainActivity"
             android:exported="false" />
         <activity
-            android:name=".MainActivity"
+            android:name=".ManHinhChao"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -39,8 +44,6 @@
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />
-
     </application>
-
 
 </manifest>

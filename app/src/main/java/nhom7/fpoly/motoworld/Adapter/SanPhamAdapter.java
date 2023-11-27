@@ -1,5 +1,6 @@
 package nhom7.fpoly.motoworld.Adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
@@ -19,6 +20,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import nhom7.fpoly.motoworld.Dao.HangxeDao;
+import nhom7.fpoly.motoworld.Fragment.CapNhatSanPhamFragment;
 import nhom7.fpoly.motoworld.Fragment.ChiTietSanPhamFragment;
 import nhom7.fpoly.motoworld.Fragment.MuaHangFragment;
 import nhom7.fpoly.motoworld.Model.Hangxe;
@@ -32,14 +34,12 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
     private ArrayList<Sanpham> list;
     private Activity activity;
     HangxeDao hangxeDao;
-    private MuaHangFragment fragment;
-
+    MuaHangFragment fragment;
 
     public void setSearchList(ArrayList<Sanpham> list) {
         this.list = list;
         notifyDataSetChanged();
     }
-
 
     public SanPhamAdapter(Context context, ArrayList<Sanpham> list, Activity activity) {
         this.context = context;
@@ -55,7 +55,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
     }
 
     @Override
-    public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
+    public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
         FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
         NumberFormat numberFormat = NumberFormat.getNumberInstance();
         Sanpham sp = list.get(position);
@@ -65,48 +65,43 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         Log.d("tag", "onBindViewHolder: " + imagesUri);
         holder.binding.listImage1.setImageURI(imagesUri);
 
-
-//        String imgName = sp.getImage();
-//        int resId = 0;
-//        if (imgName != null && !imgName.isEmpty()) {
-//            resId = ((Activity) context).getResources().getIdentifier(imgName, "drawable", ((Activity) context).getPackageName());
-//        }
-
-//        holder.binding.listImage1.setImageResource(resId);
-
-
         holder.binding.tvTensp.setText("TênSP:" + sp.getTensp());
 
         hangxeDao = new HangxeDao(context);
         Hangxe hangxe = hangxeDao.getID(String.valueOf(sp.getMahang()));
-        holder.binding.tvHangsp.setText("Hãng:" + String.valueOf(hangxe.getTenhang()));
+        holder.binding.tvHangsp.setText("Hãng:" + String.valueOf(hangxe != null ? hangxe.getTenhang() : ""));
 
         holder.binding.tvGiasp.setText("Giá:" + String.valueOf(sp.getGia()));
+//        if(sp.getTrangthai() ==1){
+//            holder.binding.tvTrangthai.setTextColor(Color.RED);
+//            holder.binding.tvTrangthai.setText("Chưa Bán");
+//        }else{
+//            holder.binding.tvTrangthai.setTextColor(Color.GREEN);
+//            holder.binding.tvTrangthai.setText("Chưa Bán");
+//        }
         holder.binding.btnedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-//                editFragment(sp,holder.itemView.getContext());
-
+                EditFragment(sp, holder.itemView.getContext());
             }
         });
         holder.binding.btndelete.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                Sanpham item = list.get(position);
+                    fragment.xoa(String.valueOf(item.getMasp()));
+                    notifyDataSetChanged();
             }
         });
 
         holder.binding.cardviewsp.setOnClickListener(view -> {
-            openFragment(sp,holder.itemView.getContext());
+            openFragment(sp, holder.itemView.getContext());
         });
     }
 
     @Override
     public int getItemCount() {
-        if (list != null) {
-            return list.size();
-        }
-        return 0;
+        return list != null ? list.size() : 0;
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
@@ -130,15 +125,31 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
             frg.setArguments(bundle);
 
             // Gửi sự kiện tới FragmentActivity để thay thế Fragment hiện tại bằng Fragment chỉnh sửa
-            if (activity instanceof FragmentActivity) {
-                fragmentActivity = (FragmentActivity) activity;
-                FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-                fragmentTransaction.replace(R.id.frmbottom, frg);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
-            }
+            FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frmbottom, frg);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         }
     }
 
+    private void EditFragment(final Sanpham sanPham, Context context) {
+        // Tạo Bundle và truyền thông tin sản phẩm vào Bundle
+        Bundle bundle = new Bundle();
+        bundle.putSerializable("Update", sanPham);
+
+        // Tạo Fragment và truyền Bundle vào Fragment
+        CapNhatSanPhamFragment updateFragment = new CapNhatSanPhamFragment();
+        updateFragment.setArguments(bundle);
+
+        // Gửi sự kiện tới FragmentActivity để thay thế Fragment hiện tại bằng Fragment chỉnh sửa
+        if (activity instanceof FragmentActivity) {
+            FragmentActivity fragmentActivity = (FragmentActivity) activity;
+            FragmentManager fragmentManager = fragmentActivity.getSupportFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.replace(R.id.frmbottom, updateFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
+        }
+    }
 }

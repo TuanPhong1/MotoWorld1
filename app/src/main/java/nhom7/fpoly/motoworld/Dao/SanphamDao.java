@@ -37,11 +37,10 @@ public class SanphamDao {
 //        values.put("trangthai",obj.getTrangthai());
         return db.insert("SANPHAM",null,values);
     }
-    public int update(Sanpham obj,int matk){
+    public int update(Sanpham obj){
         ContentValues values = new ContentValues();
         values.put("mahang",obj.getMahang());
         values.put("tensp",obj.getTensp());
-        values.put("matk",matk);
         values.put("gia",obj.getGia());
         values.put("loaixe",obj.getLoaixe());
         values.put("mauxe",obj.getMauxe());
@@ -63,6 +62,7 @@ public class SanphamDao {
             sp.setMasp(c.getInt(c.getColumnIndex("masp")));
             sp.setMahang(c.getInt(c.getColumnIndex("mahang")));
             sp.setTensp(c.getString(c.getColumnIndex("tensp")));
+            sp.setMatk(c.getInt(c.getColumnIndex("matk")));
             sp.setGia(c.getInt(c.getColumnIndex("gia")));
             sp.setLoaixe(c.getString(c.getColumnIndex("loaixe")));
             sp.setMauxe(c.getString(c.getColumnIndex("mauxe")));
@@ -83,7 +83,9 @@ public class SanphamDao {
         List<Sanpham> list = getdata(sql,id);
         return list.get(0);
     }
-
-
-
+    public List<Sanpham> getAllByMAtknd(int matk) {
+        String sql = "SELECT * FROM SANPHAM WHERE matk = ?";
+        String[] selectionArgs = {String.valueOf(matk)};
+        return getdata(sql, selectionArgs);
+    }
 }
