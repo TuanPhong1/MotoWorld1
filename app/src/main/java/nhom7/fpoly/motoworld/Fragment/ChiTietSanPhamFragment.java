@@ -11,6 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
@@ -60,7 +62,7 @@ private boolean isFavorite = false;
 
        sanphamDao = new SanphamDao(getContext());
 
-       requireActivity().findViewById(R.id.bottom_nav).setVisibility(View.GONE);
+//       requireActivity().findViewById(R.id.bottom_nav).setVisibility(View.GONE);
 
         NumberFormat numberFormat = NumberFormat.getNumberInstance();
 
@@ -89,7 +91,7 @@ private boolean isFavorite = false;
             binding.tvHangspct.setText(String.valueOf("Hãng: " + hangxe.getTenhang()));
 
             binding.tvGiaspct.setText(String.valueOf("Giá: " + item.getGia()));
-            binding.tvLoaixespct.setText(item.getLoaixe());
+            binding.tvLoaixespct.setText( "Xe "+ item.getLoaixe());
             binding.tvNamsxspct.setText(String.valueOf(item.getNamsx()));
             binding.tvDongcospct.setText(item.getDongco());
             binding.tvMausacspct.setText(item.getMauxe());
@@ -99,11 +101,29 @@ private boolean isFavorite = false;
 //                binding.chkTrangthai.setChecked(false);
 //            }
 
+            binding.ttperson.setOnClickListener(view -> {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                MyAccountFragment myAccountFragment = new MyAccountFragment();
+                fragmentTransaction.replace(R.id.frmbottom, myAccountFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            });
+            binding.imgttperson.setOnClickListener(view -> {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                MyAccountFragment myAccountFragment = new MyAccountFragment();
+                fragmentTransaction.replace(R.id.frmbottom, myAccountFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+            });
+            binding.btnmuahang.setOnClickListener(view -> {
+
+            });
         }
-
-
         return view;
-
     }
 
     @Override
@@ -112,7 +132,7 @@ private boolean isFavorite = false;
         binding.Toolbar.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                requireActivity().findViewById(R.id.bottom_nav).setVisibility(View.VISIBLE);
+//                requireActivity().findViewById(R.id.bottom_nav).setVisibility(View.VISIBLE);
                 getFragmentManager().popBackStack();
             }
         });

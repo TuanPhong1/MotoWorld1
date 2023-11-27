@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".Fragment.MyAccountFragment">
+
+  <androidx.appcompat.widget.Toolbar
+      android:id="@+id/toolbarttPerson"
+      android:layout_width="match_parent"
+      android:layout_height="60dp"
+      android:background="#05CDCC"/>
+
+  <androidx.cardview.widget.CardView
+      android:layout_width="match_parent"
+      android:layout_height="150dp"
+      android:backgroundTint="#05CCCA">
+
+    <ImageView
+        android:id="@+id/imganhttPerson"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:src="@drawable/profile"
+        android:layout_marginTop="10dp"
+        android:layout_gravity="center_horizontal"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/tvtenttperson"
+        android:layout_marginTop="120dp"
+        android:layout_gravity="center_horizontal"
+        android:textStyle="bold"
+        android:textSize="19dp"
+        android:textColor="#ffffff"/>
+  </androidx.cardview.widget.CardView>
+
+  <LinearLayout
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:layout_marginTop="210dp"
+      android:layout_margin="10dp"
+      android:orientation="vertical">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/teal_700"
+        android:layout_marginBottom="20dp"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:text="Vui lòng nhập đầy đủ thông tin" />
+
+    <EditText
+        android:id="@+id/edttenttperson"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/custom_edittext"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
+        android:hint="Họ và tên"/>
+
+    <EditText
+        android:id="@+id/edtNamsinhttperson"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_edittext"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
+        android:hint="Năm sinh"/>
+
+    <EditText
+        android:id="@+id/edtGioitinhttperson"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_edittext"
+        android:layout_marginBottom="20dp"
+        android:textStyle="bold"
+        android:hint="Giới tính"/>
+
+    <EditText
+        android:id="@+id/edtSdtttperson"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginBottom="20dp"
+        android:background="@drawable/custom_edittext"
+        android:textStyle="bold"
+        android:hint="Số điện thoại"/>
+
+    <EditText
+        android:id="@+id/edtDiaChittperson"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:background="@drawable/custom_edittext"
+        android:textStyle="bold"
+        android:hint="Địa chỉ"/>
+  </LinearLayout>
+
+  <androidx.appcompat.widget.AppCompatButton
+      android:layout_width="130dp"
+      android:layout_height="wrap_content"
+      android:background="@drawable/white_background"
+      android:textStyle="bold"
+      android:text="Lưu Thông tin"
+      android:layout_margin="10dp"
+      android:backgroundTint="#04BFBE"
+      android:textColor="#fff"
+      android:gravity="center"
+      android:layout_gravity="center_horizontal"
+      android:id="@+id/btnSave_ttperson"/>
+
+</LinearLayout>
