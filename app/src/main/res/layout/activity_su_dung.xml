@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".TaiKhoan.SuDung">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="70dp"
+        android:orientation="horizontal"
+        android:background="#00BCD4">
+        <ImageButton
+            android:id="@+id/imgbacksudung"
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:backgroundTint="#00BCD4"
+            android:src="@drawable/baseline_arrow_back_24"/>
+        <TextView
+            android:layout_gravity="center"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Điều khoản sử dụng"
+            android:textSize="23dp"
+            android:layout_marginLeft="30dp"
+            />
+    </LinearLayout>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="1.Đăng kí tài khoản "
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="a. Người dùng phải đăng ký một tài khoản để sử dụng ứng dụng.
+                      b. Thông tin đăng ký phải chính xác, đầy đủ và không gian lận."/>
+
+
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="2.Mua bán xe "
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="a. Người dùng có thể đăng thông tin về xe cần bán hoặc tìm kiếm thông tin về xe muốn mua.
+b. Người dùng phải cung cấp thông tin chính xác về xe và miêu tả một cách trung thực về tình trạng xe.
+c. Ứng dụng không chịu trách nhiệm đối với thông tin không chính xác hoặc gian lận từ người dùng."/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="3.Giao Dịch "
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="a. Người dùng có thể tiến hành giao dịch trực tiếp với nhau.
+b. Ứng dụng không chịu trách nhiệm đối với các vấn đề phát sinh trong quá trình giao dịch, bao gồm nhưng không giới hạn việc thanh toán, vận chuyển và kiểm tra xe.
+c. Người dùng phải tuân thủ các quy định pháp luật liên quan đến giao dịch mua bán xe."/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="4.Bảo mật "
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="a. Ứng dụng sẽ bảo mật thông tin cá nhân của người dùng và không tiết lộ cho bên thứ ba mà không có sự đồng ý của người dùng.
+b. Người dùng cũng phải tuân thủ các quy định bảo mật và không sử dụng thông tin cá nhân của người khác một cách trái phép."/>
+
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="5.Trách nhiệm miễn nhiễm trừ trách "
+        android:textStyle="bold"
+        android:textSize="20dp"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="14dp"
+        android:text="a. Ứng dụng không chịu trách nhiệm đối với bất kỳ tổn thất nào phát sinh từ việc sử dụng ứng dụng hoặc các giao dịch mua bán xe.
+           b. Người dùng sử dụng ứng dụng và tham gia giao dịch mua bán xe trên ứng dụng này hoàn toàn tự chịu rủi ro."/>
+
+
+
+
+</LinearLayout>
