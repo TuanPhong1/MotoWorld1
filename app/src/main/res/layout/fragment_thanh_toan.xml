@@ -41,12 +41,12 @@
         android:orientation="horizontal">
         <ImageView
             android:layout_width="130dp"
-            android:layout_height="120dp"
+            android:layout_height="130dp"
             android:src="@drawable/xemay"
             android:layout_marginLeft="12dp"/>
 
         <LinearLayout
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="10dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="horizontal">
@@ -57,19 +57,28 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Loại xe"/>
+                    android:text="Tên xe:"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Năm sản xuất"/>
+                    android:text="Năm sản xuất:"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Động cơ"/>
+                    android:text="Động cơ:"/>
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="Màu sắc"/>
+                    android:text="Màu sắc:"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Loại xe:"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hãng xe:"/>
+
             </LinearLayout>
 
             <LinearLayout
@@ -78,21 +87,35 @@
                 android:layout_marginLeft="90dp"
                 android:orientation="vertical">
                 <TextView
+                    android:id="@+id/txttenxett"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Wave"/>
                 <TextView
+                    android:id="@+id/txtsanxuattt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="2020"/>
                 <TextView
+                    android:id="@+id/txtdongcott"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="110cc"/>
                 <TextView
+                    android:id="@+id/txtmausactt"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:text="Đen"/>
+                <TextView
+                    android:id="@+id/txtloaixett"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Xe số"/>
+                <TextView
+                    android:id="@+id/txthangxett"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Honda"/>
             </LinearLayout>
 
         </LinearLayout>
@@ -111,6 +134,7 @@
             android:textStyle="bold"
             android:textSize="15dp"/>
         <TextView
+            android:id="@+id/txtGiaSanPhamtt"
             android:textColor="#FF5722"
             android:layout_marginLeft="20dp"
             android:layout_width="wrap_content"
@@ -133,6 +157,7 @@
         android:text="Số điện thoại:"
         android:textSize="18dp"/>
     <EditText
+        android:id="@+id/edtSoDt"
         android:layout_marginLeft="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -145,6 +170,7 @@
         android:text="Địa Chỉ:"
         android:textSize="18dp"/>
     <EditText
+        android:id="@+id/edtDiaChi"
         android:layout_marginLeft="18dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -166,24 +192,8 @@
         android:textSize="18dp"
         android:textColor="#FF9800"/>
 
-    <TextView
-        android:layout_marginTop="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Tổng Tiền Sản Phẩm"
-        android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_marginLeft="20dp"/>
-    <TextView
-        android:layout_marginLeft="20dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="20.000.000đ"
-        android:textSize="25dp"
-        android:textStyle="bold"
-        android:textColor="#2196F3"
-        />
     <Button
+        android:id="@+id/btnDatHangtt"
         android:layout_width="350dp"
         android:layout_height="wrap_content"
         android:layout_gravity="center"
@@ -192,11 +202,6 @@
         android:textColor="@color/black"
         android:textSize="23dp"
         android:backgroundTint="#00BCD4"/>
-
-
-
-
-
 
 
 </LinearLayout>
