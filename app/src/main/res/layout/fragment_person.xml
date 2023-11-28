@@ -11,13 +11,13 @@
         android:layout_width="match_parent"
         android:layout_height="150dp"
         android:orientation="horizontal"
-        android:background="#06BCAB">
+        android:background="#fff">
 
         <androidx.cardview.widget.CardView
             android:id="@+id/cardviewperson"
             android:layout_width="match_parent"
-            android:layout_marginTop="40dp"
-            android:backgroundTint="#06BCAB"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#fff"
             android:layout_height="wrap_content">
             <ImageView
                 android:id="@+id/imganhperson"
@@ -29,7 +29,7 @@
                 android:id="@+id/tvtennguoidung"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="#ffffff"
+                android:textColor="#04B8A7"
                 android:layout_gravity="center"
                 android:layout_marginLeft="65dp"
                 android:textStyle="bold"

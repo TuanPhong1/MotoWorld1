@@ -33,26 +33,27 @@ import nhom7.fpoly.motoworld.TaiKhoan.XeYeuThich;
 
 public class PersonFragment extends Fragment {
 
-CardView cardView;
-Activity activity;
+    CardView cardView;
+    Activity activity;
     TextView tennd;
-    LinearLayout linearLayoutdangban,linearLayoutdamua,linearLayoutyeuthich,linearLayoutsudung,logout;
+    LinearLayout linearLayoutdangban, linearLayoutdamua, linearLayoutyeuthich, linearLayoutsudung, logout;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        View view=inflater.inflate(R.layout.fragment_person, container, false);
-         linearLayoutdangban=view.findViewById(R.id.imgdangban);
-         linearLayoutdamua=view.findViewById(R.id.imgdamua);
-         linearLayoutyeuthich=view.findViewById(R.id.imgyeuthich);
-         linearLayoutsudung=view.findViewById(R.id.imgsudung);
-        logout =view.findViewById(R.id.btnlogout);
-         tennd = view.findViewById(R.id.tvtennguoidung);
+        View view = inflater.inflate(R.layout.fragment_person, container, false);
+        linearLayoutdangban = view.findViewById(R.id.imgdangban);
+        linearLayoutdamua = view.findViewById(R.id.imgdamua);
+        linearLayoutyeuthich = view.findViewById(R.id.imgyeuthich);
+        linearLayoutsudung = view.findViewById(R.id.imgsudung);
+        logout = view.findViewById(R.id.btnlogout);
+        tennd = view.findViewById(R.id.tvtennguoidung);
         cardView = view.findViewById(R.id.cardviewperson);
 
         // Truy xuất tên người dùng từ SharedPreferences
         SharedPreferences shared = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-        String name = shared.getString("tenND", "Name"); // "Name" là tên được hiển thị mặc định nếu không có tên trong SharedPreferences
+        String name = shared.getString("tenND", "Mafia"); // "Name" là tên được hiển thị mặc định nếu không có tên trong SharedPreferences
 
 // Đặt tên vào tvtennguoidung
         tennd.setText(name);
@@ -71,29 +72,31 @@ Activity activity;
 
         cardView.setOnClickListener(v -> {
 
-                FragmentManager fragmentManager = getParentFragmentManager();
-                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            FragmentManager fragmentManager = getParentFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            //animation từ fragment này sang fragment khác
+            fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
 
-                MyAccountFragment myAccountFragment = new MyAccountFragment();
-                fragmentTransaction.replace(R.id.frmbottom, myAccountFragment);
-                fragmentTransaction.addToBackStack(null);
-                fragmentTransaction.commit();
+            MyAccountFragment myAccountFragment = new MyAccountFragment();
+            fragmentTransaction.replace(R.id.frmbottom, myAccountFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         });
 
         linearLayoutdangban.setOnClickListener(v -> {
-            Intent intent=new Intent(getActivity(), XeDangBan.class);
+            Intent intent = new Intent(getActivity(), XeDangBan.class);
             startActivity(intent);
         });
         linearLayoutdamua.setOnClickListener(v -> {
-            Intent intent=new Intent(getActivity(), XeDaMua.class);
+            Intent intent = new Intent(getActivity(), XeDaMua.class);
             startActivity(intent);
         });
         linearLayoutyeuthich.setOnClickListener(v -> {
-            Intent intent=new Intent(getActivity(), XeYeuThich.class);
+            Intent intent = new Intent(getActivity(), XeYeuThich.class);
             startActivity(intent);
         });
         linearLayoutsudung.setOnClickListener(v -> {
-            Intent intent=new Intent(getActivity(), SuDung.class);
+            Intent intent = new Intent(getActivity(), SuDung.class);
             startActivity(intent);
         });
         logout.setOnClickListener(v -> {
@@ -125,7 +128,7 @@ Activity activity;
         });
         return view;
     }
-//    public void updateUserName(String newName) {
-//        tennd.setText(newName);
-//    }
+    public void updateUserName(String newName) {
+        tennd.setText(newName);
+    }
 }

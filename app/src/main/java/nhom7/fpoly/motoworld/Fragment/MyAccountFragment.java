@@ -45,12 +45,12 @@ String tenND,namSinh,gioiTinh,sdt,diaChi;
         editor.putString("tenND", tenND); // tenND là tên mới được người dùng nhập vào
         editor.apply();
 
-        // Đoạn mã trong MyAccountFragment khi người dùng đổi sang tài khoản khác
-//        String newUserName = "Mafia";
-//        PersonFragment personFragment = (PersonFragment) getParentFragmentManager().findFragmentByTag("person_fragment_tag");
-//        if (personFragment != null) {
-//            personFragment.updateUserName(newUserName); // newUserName là tên người dùng mới
-//        }
+//         Đoạn mã trong MyAccountFragment khi người dùng đổi sang tài khoản khác
+        String newUserName = "Mafia";
+        PersonFragment personFragment = (PersonFragment) getParentFragmentManager().findFragmentByTag("person_fragment_tag");
+        if (personFragment != null) {
+            personFragment.updateUserName(newUserName); // newUserName là tên người dùng mới
+        }
 
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(binding.toolbarttPerson);
