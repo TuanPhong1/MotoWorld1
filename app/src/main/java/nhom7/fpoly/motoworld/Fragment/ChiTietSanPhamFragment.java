@@ -6,6 +6,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -17,7 +18,6 @@ import androidx.fragment.app.FragmentTransaction;
 import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import nhom7.fpoly.motoworld.Adapter.SanPhamAdapter;
@@ -64,7 +64,7 @@ private boolean isFavorite = false;
 
 //       requireActivity().findViewById(R.id.bottom_nav).setVisibility(View.GONE);
 
-        NumberFormat numberFormat = NumberFormat.getNumberInstance();
+
 
         AppCompatActivity activity = (AppCompatActivity) getActivity();
         activity.setSupportActionBar(binding.Toolbar);
@@ -104,6 +104,7 @@ private boolean isFavorite = false;
             binding.ttperson.setOnClickListener(view -> {
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out);
 
                 MyAccountFragment myAccountFragment = new MyAccountFragment();
                 fragmentTransaction.replace(R.id.frmbottom, myAccountFragment);
@@ -113,11 +114,29 @@ private boolean isFavorite = false;
             binding.imgttperson.setOnClickListener(view -> {
                 FragmentManager fragmentManager = getParentFragmentManager();
                 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+                fragmentTransaction.setCustomAnimations(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out);
 
                 MyAccountFragment myAccountFragment = new MyAccountFragment();
                 fragmentTransaction.replace(R.id.frmbottom, myAccountFragment);
                 fragmentTransaction.addToBackStack(null);
                 fragmentTransaction.commit();
+            });
+            binding.ImgButtonFavorite.setOnClickListener(view -> {
+//                FragmentManager fragmentManager = getParentFragmentManager();
+//                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+//                fragmentTransaction.setCustomAnimations(R.anim.fade_in,R.anim.fade_out,R.anim.fade_in,R.anim.fade_out);
+//
+//                FavoriteFragment favoriteFragment = new FavoriteFragment();
+//                fragmentTransaction.replace(R.id.frmbottom, favoriteFragment);
+//                fragmentTransaction.addToBackStack(null);
+//                fragmentTransaction.commit();
+
+                isFavorite =!isFavorite;
+                if(isFavorite){
+                    Toast.makeText(activity, "Đã thêm vào yêu thích", Toast.LENGTH_SHORT).show();
+                }else{
+                    Toast.makeText(activity, "Đã hủy yêu thích", Toast.LENGTH_SHORT).show();
+                }
             });
             binding.btnmuahang.setOnClickListener(view -> {
 

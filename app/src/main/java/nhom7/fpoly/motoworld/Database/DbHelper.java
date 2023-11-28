@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public DbHelper(@Nullable Context context) {
-        super(context, "Motowoowo", null, 1);
+        super(context, "Motowoowoo", null, 2);
     }
 
     @Override
@@ -26,7 +26,7 @@ public class DbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(tbAdmin);
 
         sqLiteDatabase.execSQL("insert into HANGXE values(1,'Honda'),(2,'Ducati'),(3,'Yamaha'),(4,'Suzuki')");
-        sqLiteDatabase.execSQL("insert into TKNGUOIDUNG values(1,'chien','123','Admin'),(2,'phong','123','Quản Trị Viên')");
+        sqLiteDatabase.execSQL("insert into TKNGUOIDUNG values(1,'chien','123'),(2,'phong','123')");
         sqLiteDatabase.execSQL("insert into NGUOIDUNG values(1,'Nguyễn Minh Chiến','2004','Nam','0325555876','Thái Bình',1)");
         sqLiteDatabase.execSQL("insert into ADMIN values(1,'Nguyen Minh Chien','admin','admin'),(2,'Phạm Văn Phong','admin1','admin1'),(3,'Nguyễn Tuấn Phong','admin2','admin2')");
     }
