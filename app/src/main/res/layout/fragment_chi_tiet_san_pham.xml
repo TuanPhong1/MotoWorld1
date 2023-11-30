@@ -20,7 +20,7 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="110dp"
             android:background="#03BCAA"
-            android:src="@drawable/baseline_favorite_border_24" />
+            android:src="@drawable/baseline_favorite_24" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -68,19 +68,23 @@
             android:id="@+id/imgttperson"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="15dp"
+            android:layout_marginRight="15dp"
             android:background="#fff"
             android:src="@drawable/profile"
-            android:layout_gravity="center"
-            android:layout_marginLeft="15dp"
-            android:layout_marginRight="15dp" />
+            tools:ignore="SpeakableTextPresentCheck" />
 
-        <TextView
-            android:id="@+id/tvtentknd"
-            android:layout_width="match_parent"
-            android:layout_height="30dp"
-            android:layout_gravity="center_vertical"
-            android:text="Ten nguoi dung"
-            android:textSize="17dp" />
+
+
+    <TextView
+        android:id="@+id/tvtentknd"
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:layout_gravity="center_vertical"
+        android:text="Ten nguoi dung"
+        android:textStyle="bold"
+        android:textSize="17dp" />
 
 
     </LinearLayout>

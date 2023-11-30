@@ -93,7 +93,7 @@ public class MuaHangFragment extends Fragment {
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         binding.rcvListsp.setLayoutManager(gridLayoutManager);
 
-        adapter = new SanPhamAdapter(getContext(), list, getActivity());
+        adapter = new SanPhamAdapter(getContext(), list, getActivity(),dao);
         binding.rcvListsp.setAdapter(adapter);
     }
     public void xoa(final String id) {

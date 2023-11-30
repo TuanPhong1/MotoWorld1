@@ -1,12 +1,15 @@
 package nhom7.fpoly.motoworld.Adapter;
 
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -18,7 +21,9 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import nhom7.fpoly.motoworld.Dao.HangxeDao;
+import nhom7.fpoly.motoworld.Dao.YeuThichDao;
 import nhom7.fpoly.motoworld.Fragment.ChiTietSanPhamFragment;
+import nhom7.fpoly.motoworld.Fragment.FavoriteFragment;
 import nhom7.fpoly.motoworld.Model.Hangxe;
 import nhom7.fpoly.motoworld.Model.Sanpham;
 import nhom7.fpoly.motoworld.R;
@@ -28,7 +33,9 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
     Context context;
     private ArrayList<Sanpham> list;
     private Activity activity;
-
+    private FavoriteFragment fragment;
+    YeuThichDao yeuThichDao;
+int matknd;
     public FavoriteAdapter(Context context, ArrayList<Sanpham> list, Activity activity) {
         this.context = context;
         this.list = list;
@@ -60,9 +67,14 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
         holder.binding.tvHangfavorite.setText("Hãng:" + String.valueOf(hangxe.getTenhang()));
 
         holder.binding.tvGiafavorite.setText("Giá:" + String.valueOf(sp.getGia()));
+
         holder.binding.cardviewsp.setOnClickListener(view -> {
             openFragment(sp,holder.itemView.getContext());
         });
+        holder.binding.deleteFavorite.setOnClickListener(view -> {
+            xoa(sp.getMasp());
+        });
+
     }
 
     @Override
@@ -98,5 +110,31 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                 fragmentTransaction.commit();
             }
         }
+    }
+    public void xoa(int id) {
+        AlertDialog.Builder builder = new AlertDialog.Builder(context);
+        builder.setTitle("Delete");
+        builder.setMessage("Bạn có muốn xóa không?");
+        builder.setCancelable(true);
+
+        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                yeuThichDao.delete(String.valueOf(id));
+                list.clear();
+                list.addAll(yeuThichDao.getSanPhamInGioHangByMatkd(matknd));
+                notifyDataSetChanged();
+                dialog.cancel();
+                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
+            }
+        });
+        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                dialog.cancel();
+            }
+        });
+        AlertDialog alert = builder.create();
+        builder.show();
     }
 }

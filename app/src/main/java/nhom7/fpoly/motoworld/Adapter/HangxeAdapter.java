@@ -12,8 +12,10 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
 import java.util.List;
 
+import nhom7.fpoly.motoworld.Dao.HangxeDao;
 import nhom7.fpoly.motoworld.Fragment.HangxeFragment;
 import nhom7.fpoly.motoworld.Model.Hangxe;
 import nhom7.fpoly.motoworld.R;
@@ -25,12 +27,18 @@ public class HangxeAdapter extends ArrayAdapter<Hangxe> {
 
     TextView tvmahang,tvhang;
     ImageView delete;
+HangxeDao dao;
+    public void setSearchList(ArrayList<Hangxe> list) {
+        this.list = list;
+        notifyDataSetChanged();
+    }
 
-    public HangxeAdapter(@NonNull Context context, HangxeFragment frgHang, List<Hangxe> list) {
+
+    public HangxeAdapter(@NonNull Context context, List<Hangxe> list, HangxeDao dao) {
         super(context, 0,list);
         this.context = context;
-        this.hangxeFragment = frgHang;
         this.list = list;
+        this.dao = dao;
     }
 
     @NonNull

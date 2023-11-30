@@ -27,6 +27,8 @@ import androidx.annotation.NonNull;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -38,6 +40,7 @@ import nhom7.fpoly.motoworld.Dao.SanphamDao;
 import nhom7.fpoly.motoworld.Dao.TkNguoiDungDao;
 import nhom7.fpoly.motoworld.Model.Hangxe;
 import nhom7.fpoly.motoworld.Model.Sanpham;
+import nhom7.fpoly.motoworld.R;
 import nhom7.fpoly.motoworld.databinding.FragmentDangtinBinding;
 
 public class DangtinFragment extends Fragment {
@@ -130,6 +133,14 @@ public class DangtinFragment extends Fragment {
 
             long insert = dao.insert(item,matk);
             if (insert > 0) {
+                FragmentManager fragmentManager = getParentFragmentManager();
+                FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+
+                MuaHangFragment muaHangFragment = new MuaHangFragment();
+                fragmentTransaction.replace(R.id.frmbottom, muaHangFragment);
+                fragmentTransaction.addToBackStack(null);
+                fragmentTransaction.commit();
+
                 Toast.makeText(getActivity(), "Thêm sản phẩn thành công", Toast.LENGTH_SHORT).show();
             } else {
                 Toast.makeText(getActivity(), "Thêm sản phẩm thất bại", Toast.LENGTH_SHORT).show();

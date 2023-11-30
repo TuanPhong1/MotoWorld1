@@ -28,7 +28,6 @@ import nhom7.fpoly.motoworld.R;
 import nhom7.fpoly.motoworld.TaiKhoan.SuDung;
 import nhom7.fpoly.motoworld.TaiKhoan.XeDaMua;
 import nhom7.fpoly.motoworld.TaiKhoan.XeDangBan;
-import nhom7.fpoly.motoworld.TaiKhoan.XeYeuThich;
 
 
 public class PersonFragment extends Fragment {
@@ -92,8 +91,14 @@ public class PersonFragment extends Fragment {
             startActivity(intent);
         });
         linearLayoutyeuthich.setOnClickListener(v -> {
-            Intent intent = new Intent(getActivity(), XeYeuThich.class);
-            startActivity(intent);
+            FragmentManager fragmentManager = getParentFragmentManager();
+            FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+            fragmentTransaction.setCustomAnimations(R.anim.fade_in, R.anim.fade_out, R.anim.fade_in, R.anim.fade_out);
+
+            FavoriteFragment favoriteFragment = new FavoriteFragment();
+            fragmentTransaction.replace(R.id.frmbottom, favoriteFragment);
+            fragmentTransaction.addToBackStack(null);
+            fragmentTransaction.commit();
         });
         linearLayoutsudung.setOnClickListener(v -> {
             Intent intent = new Intent(getActivity(), SuDung.class);

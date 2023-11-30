@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public DbHelper(@Nullable Context context) {
-        super(context, "Motowoowoo", null, 2);
+        super(context, "Motowoowwww", null, 2);
     }
 
     @Override
@@ -16,19 +16,19 @@ public class DbHelper extends SQLiteOpenHelper {
 
         String tbHangXe = "create table HANGXE(mahang integer primary key autoincrement,tenhang text)";
         sqLiteDatabase.execSQL(tbHangXe);
-        String tbSanPham = "create table SANPHAM(masp integer primary key autoincrement,mahang integer references HANGXE(mahang),matk integer references TKNGUOIDUNG(matk),tensp text,gia integer,loaixe text,mauxe text,namsx integer,dongco text,images text)";
+        String tbSanPham = "create table SANPHAM(masp integer primary key autoincrement,mahang integer references HANGXE(mahang),matk integer references TKNGUOIDUNG(matk),tensp text,gia integer,loaixe text,mauxe text,namsx integer,dongco text,images text,mand integer references NGUOIDUNG(mand))";
         sqLiteDatabase.execSQL(tbSanPham);
         String tbNguoiDung = "create table NGUOIDUNG(mand integer primary key autoincrement,tennd text,namsinh text,gioitinh text,sdt text,diachi text,matk integer references TKNGUOIDUNG(matk))";
         sqLiteDatabase.execSQL(tbNguoiDung);
         String tbTaiKhoanND = "create table TKNGUOIDUNG(matk integer primary key autoincrement,taikhoan text ,matkhau text)";
         sqLiteDatabase.execSQL(tbTaiKhoanND);
-        String tbAdmin = "create table ADMIN(maadmin integer primary key autoincrement,tenadmin text,taikhoan text,matkhau text)";
-        sqLiteDatabase.execSQL(tbAdmin);
+        String yeuthich = "create table YEUTHICH(mayt integer primary key autoincrement,masp integer references SANPHAM(masp) ,matk integer references TKNGUOIDUNG(matk))";
+        sqLiteDatabase.execSQL(yeuthich);
 
         sqLiteDatabase.execSQL("insert into HANGXE values(1,'Honda'),(2,'Ducati'),(3,'Yamaha'),(4,'Suzuki')");
-        sqLiteDatabase.execSQL("insert into TKNGUOIDUNG values(1,'chien','123'),(2,'phong','123')");
+        sqLiteDatabase.execSQL("insert into TKNGUOIDUNG values(1,'admin','admin'),(2,'chien','1')") ;
         sqLiteDatabase.execSQL("insert into NGUOIDUNG values(1,'Nguyễn Minh Chiến','2004','Nam','0325555876','Thái Bình',1)");
-        sqLiteDatabase.execSQL("insert into ADMIN values(1,'Nguyen Minh Chien','admin','admin'),(2,'Phạm Văn Phong','admin1','admin1'),(3,'Nguyễn Tuấn Phong','admin2','admin2')");
+
     }
 
     @Override

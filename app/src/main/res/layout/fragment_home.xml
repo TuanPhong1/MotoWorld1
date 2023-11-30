@@ -12,24 +12,19 @@
         android:layout_width="match_parent"
         android:layout_height="80dp"
         android:background="#0BB6A6"
+        android:visibility="visible"
         android:elevation="4dp"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar" >
 
         <androidx.appcompat.widget.SearchView
-            android:layout_width="330dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="12dp"
             android:layout_marginStart="12dp"
-            android:id="@+id/searchhome"
+            android:id="@+id/search"
             android:focusable="false"
             android:background="@drawable/white_background"/>
-        <ImageButton
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:id="@+id/btnfavorite"
-            android:background="#04B6A6"
-            android:src="@drawable/baseline_favorite_border_24"/>
     </androidx.appcompat.widget.Toolbar>
 
     <TextView

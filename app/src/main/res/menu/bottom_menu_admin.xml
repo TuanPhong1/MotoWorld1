@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/qlnd"
+        android:title="QLí Người Dùng "
+        android:icon="@drawable/outline_person_pin_24"/>
+    <item
+        android:id="@+id/qlsp"
+        android:title="QLí Sản Phẩm"
+        android:icon="@drawable/baseline_domain_verification_24"/>
+    <item
+        android:id="@+id/qlhang"
+        android:title="QLí Hãng"
+        android:icon="@drawable/baseline_assignment_24"/>
+    <item
+        android:id="@+id/Admin"
+        android:title="Admin"
+        android:icon="@drawable/baseline_person_24"/>
+
+
+</menu>

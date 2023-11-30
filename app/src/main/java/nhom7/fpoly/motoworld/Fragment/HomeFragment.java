@@ -49,8 +49,8 @@ private View view;
 
         loadata();
 
-        binding.searchhome.clearFocus();
-        binding.searchhome.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
+        binding.search.clearFocus();
+        binding.search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
                 return false;
@@ -62,6 +62,7 @@ private View view;
                 return true;
             }
         });
+
 
         handler = new Handler();
         binding.Viewpager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -103,7 +104,7 @@ private View view;
         list = (ArrayList<Sanpham>) dao.getAll();
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         binding.rcvDanhsachsp.setLayoutManager(gridLayoutManager);
-        sanPhamAdapter = new SanPhamAdapter(getContext(),list,getActivity());
+        sanPhamAdapter = new SanPhamAdapter(getContext(),list,getActivity(),dao);
         binding.rcvDanhsachsp.setAdapter(sanPhamAdapter);
     }
     private void searchList(String text) {
@@ -119,5 +120,4 @@ private View view;
             sanPhamAdapter.setSearchList(sanphamList);
         }
     }
-
 }

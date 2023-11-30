@@ -20,26 +20,27 @@ public class NguoiDungDao {
         db = dbHelper.getWritableDatabase();
     }
 
-    public long insert(NguoiDung obj, int matk) {
+    public long insert(NguoiDung obj) {
         ContentValues values = new ContentValues();
         values.put("tennd", obj.getTennd());
         values.put("namsinh", obj.getNamsinh());
         values.put("gioitinh", obj.getGioitinh());
         values.put("sdt", obj.getSdt());
         values.put("diachi", obj.getDiachi());
-        values.put("matk", matk);
+        values.put("matk",obj.getMatk());
         return db.insert("NGUOIDUNG", null, values);
     }
 
-    public long update(NguoiDung obj, int matk) {
+    public boolean update(NguoiDung obj) {
         ContentValues values = new ContentValues();
         values.put("tennd", obj.getTennd());
         values.put("namsinh", obj.getNamsinh());
         values.put("gioitinh", obj.getGioitinh());
         values.put("sdt", obj.getSdt());
         values.put("diachi", obj.getDiachi());
-        values.put("matk", matk);
-        return db.update("NGUOIDUNG", values, "mand=?", new String[]{String.valueOf(obj.getMand())});
+        values.put("matk",obj.getMatk());
+        long row =  db.update("NGUOIDUNG", values, "mand=?", new String[]{String.valueOf(obj.getMand())});
+        return (row>0);
     }
 
     public long delete(String id) {
@@ -69,5 +70,10 @@ public class NguoiDungDao {
             list.add(obj);
         }
         return list;
+    }
+    public List<NguoiDung> getAllByMAtknd(int matk) {
+        String sql = "SELECT * FROM NGUOIDUNG WHERE matk = ?";
+        String[] selectionArgs = {String.valueOf(matk)};
+        return getData(sql, selectionArgs);
     }
 }

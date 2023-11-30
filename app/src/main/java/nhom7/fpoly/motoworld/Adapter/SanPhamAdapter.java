@@ -20,6 +20,7 @@ import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import nhom7.fpoly.motoworld.Dao.HangxeDao;
+import nhom7.fpoly.motoworld.Dao.SanphamDao;
 import nhom7.fpoly.motoworld.Fragment.CapNhatSanPhamFragment;
 import nhom7.fpoly.motoworld.Fragment.ChiTietSanPhamFragment;
 import nhom7.fpoly.motoworld.Fragment.MuaHangFragment;
@@ -35,16 +36,18 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
     private Activity activity;
     HangxeDao hangxeDao;
     MuaHangFragment fragment;
+    SanphamDao dao;
 
     public void setSearchList(ArrayList<Sanpham> list) {
         this.list = list;
         notifyDataSetChanged();
     }
 
-    public SanPhamAdapter(Context context, ArrayList<Sanpham> list, Activity activity) {
+    public SanPhamAdapter(Context context, ArrayList<Sanpham> list, Activity activity,SanphamDao dao) {
         this.context = context;
         this.list = list;
         this.activity = activity;
+        this.dao = dao;
     }
 
     @NonNull

@@ -28,6 +28,7 @@ public class SanphamDao {
         values.put("mahang",obj.getMahang());
         values.put("tensp",obj.getTensp());
         values.put("matk",matk);
+        values.put("mand",obj.getMand());
         values.put("gia",obj.getGia());
         values.put("loaixe",obj.getLoaixe());
         values.put("mauxe",obj.getMauxe());
@@ -63,6 +64,7 @@ public class SanphamDao {
             sp.setMahang(c.getInt(c.getColumnIndex("mahang")));
             sp.setTensp(c.getString(c.getColumnIndex("tensp")));
             sp.setMatk(c.getInt(c.getColumnIndex("matk")));
+            sp.setMand(c.getInt(c.getColumnIndex("mand")));
             sp.setGia(c.getInt(c.getColumnIndex("gia")));
             sp.setLoaixe(c.getString(c.getColumnIndex("loaixe")));
             sp.setMauxe(c.getString(c.getColumnIndex("mauxe")));

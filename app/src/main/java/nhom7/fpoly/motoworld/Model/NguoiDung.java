@@ -1,7 +1,7 @@
 package nhom7.fpoly.motoworld.Model;
 
 public class NguoiDung {
-    private int mand;
+    private int mand,matk;
     private String tennd;
     private String namsinh;
     private String gioitinh;
@@ -11,8 +11,9 @@ public class NguoiDung {
     public NguoiDung() {
     }
 
-    public NguoiDung(int mand, String tennd, String namsinh, String gioitinh, String sdt, String diachi) {
+    public NguoiDung(int mand, int matk, String tennd, String namsinh, String gioitinh, String sdt, String diachi) {
         this.mand = mand;
+        this.matk = matk;
         this.tennd = tennd;
         this.namsinh = namsinh;
         this.gioitinh = gioitinh;
@@ -26,6 +27,14 @@ public class NguoiDung {
 
     public void setMand(int mand) {
         this.mand = mand;
+    }
+
+    public int getMatk() {
+        return matk;
+    }
+
+    public void setMatk(int matk) {
+        this.matk = matk;
     }
 
     public String getTennd() {

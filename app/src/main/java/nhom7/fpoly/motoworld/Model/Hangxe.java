@@ -1,6 +1,8 @@
 package nhom7.fpoly.motoworld.Model;
 
-public class Hangxe {
+import java.io.Serializable;
+
+public class Hangxe implements Serializable {
     public int mahang;
     private String tenhang;
 

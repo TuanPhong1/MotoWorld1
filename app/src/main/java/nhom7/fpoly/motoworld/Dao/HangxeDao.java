@@ -26,7 +26,7 @@ public class HangxeDao {
     public int update(Hangxe obj){
         ContentValues values = new ContentValues();
         values.put("tenhang",obj.getTenhang());
-        return db.update("HANGXE",values,"mahang=?",new String[]{String.valueOf(obj.getTenhang())});
+        return db.update("HANGXE",values,"mahang=?",new String[]{String.valueOf(obj.getMahang())});
     }
     public int delete(String id){
         return db.delete("HANGXE","mahang=?",new String[]{id});

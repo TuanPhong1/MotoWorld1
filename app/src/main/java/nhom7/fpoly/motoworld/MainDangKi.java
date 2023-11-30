@@ -46,5 +46,9 @@ private ActivityMainDangKiBinding binding;
                 }
             }
         });
+        binding.loginRedirectText.setOnClickListener(view -> {
+            Intent intent = new Intent(MainDangKi.this, MainDangNhap.class);
+            startActivity(intent);
+        });
     }
 }

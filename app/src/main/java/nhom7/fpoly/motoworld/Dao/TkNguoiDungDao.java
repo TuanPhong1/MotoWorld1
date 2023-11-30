@@ -1,11 +1,8 @@
 package nhom7.fpoly.motoworld.Dao;
 
-import static android.content.Context.MODE_PRIVATE;
-
 import android.annotation.SuppressLint;
 import android.content.ContentValues;
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 
@@ -18,11 +15,9 @@ import nhom7.fpoly.motoworld.Model.TkNguoiDung;
 public class TkNguoiDungDao {
     SQLiteDatabase db;
     DbHelper dbHelper;
-    SharedPreferences sharedPreferences;
     public TkNguoiDungDao(Context context) {
          dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
-        sharedPreferences =context.getSharedPreferences("USER_FILE", MODE_PRIVATE);
     }
 
     public long insert(TkNguoiDung obj) {
