@@ -8,7 +8,7 @@
 
     <androidx.cardview.widget.CardView
         android:layout_width="200dp"
-        android:layout_height="235dp"
+        android:layout_height="240dp"
         android:layout_marginStart="5dp"
         android:layout_marginEnd="5dp"
         android:layout_marginVertical="10dp"
@@ -17,7 +17,7 @@
         app:cardElevation="8dp">
 
         <ImageView
-            android:id="@+id/listImage1"
+            android:id="@+id/img_xedamua"
             android:layout_width="match_parent"
             android:layout_height="100dp"
             android:scaleType="centerCrop"
@@ -26,7 +26,7 @@
             android:src="@drawable/img1" />
 
         <TextView
-            android:id="@+id/tv_tensp"
+            android:id="@+id/tv_tenxedamua"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="120dp"
@@ -35,7 +35,7 @@
             android:textSize="18dp"
             android:text="Tên"/>
         <TextView
-            android:id="@+id/tv_hangsp"
+            android:id="@+id/tv_hangxedamua"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="150dp"
@@ -44,8 +44,9 @@
             android:textSize="18dp"
             android:text="Hãng"/>
 
+
         <TextView
-            android:id="@+id/tv_giasp"
+            android:id="@+id/tv_giaxedamua"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="180dp"
@@ -55,41 +56,14 @@
             android:text="Giá"/>
 
         <TextView
+            android:id="@+id/tv_ttxedamua"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:id="@+id/tvdangtin"
+            android:layout_marginTop="210dp"
             android:layout_marginLeft="10dp"
-            android:text="Đã bán"
+            android:textStyle="bold"
             android:textSize="18dp"
-            android:layout_marginTop="207dp"
-            android:textStyle="bold"/>
-
-
-        <ImageView
-            android:id="@+id/btnedit"
-            android:layout_width="25dp"
-            android:layout_height="25dp"
-            android:layout_marginTop="130dp"
-            android:layout_marginLeft="160dp"
-            android:src="@drawable/baseline_edit_24" />
-        <ImageView
-            android:id="@+id/btndelete"
-            android:layout_width="25dp"
-            android:layout_height="26dp"
-            android:layout_marginTop="170dp"
-            android:layout_marginLeft="160dp"
-            android:src="@drawable/baseline_delete_24" />
-
-<!--        <TextView-->
-<!--            android:id="@+id/tv_trangthai"-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_marginTop="205dp"-->
-<!--            android:layout_marginLeft="10dp"-->
-<!--            android:textStyle="bold"-->
-<!--            android:textSize="18dp"-->
-<!--            android:textColor="#ED0000"-->
-<!--            android:text="Chưa bán"/>-->
+            android:text="Trạng Thái"/>
 
     </androidx.cardview.widget.CardView>
 </LinearLayout>

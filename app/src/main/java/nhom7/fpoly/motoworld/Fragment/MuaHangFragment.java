@@ -88,7 +88,7 @@ public class MuaHangFragment extends Fragment {
         //show list product in recyclerview MuaHangFragment
         dao = new SanphamDao(getActivity());
         list = (ArrayList<Sanpham>) dao.getAll();
-        list = (ArrayList<Sanpham>) dao.getAllByMAtknd(matk);
+        list = (ArrayList<Sanpham>) dao.getAllByMAtknd(matk);;
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(getActivity(), 2);
         binding.rcvListsp.setLayoutManager(gridLayoutManager);

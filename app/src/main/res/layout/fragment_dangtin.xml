@@ -152,13 +152,13 @@
         android:padding="15dp"
         android:hint="Năm sản xuất"/>
 
-<!--    <CheckBox-->
-<!--        android:layout_width="wrap_content"-->
-<!--        android:layout_height="wrap_content"-->
-<!--        android:id="@+id/chk_ttdangtin"-->
-<!--        android:text="Chưa bán"-->
-<!--        android:textSize="18dp"-->
-<!--        android:textStyle="bold"/>-->
+    <CheckBox
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/chk_ttdangtin"
+        android:text="Đã bán"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_dangtin"

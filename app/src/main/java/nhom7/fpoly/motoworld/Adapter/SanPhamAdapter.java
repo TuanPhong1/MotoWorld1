@@ -3,6 +3,7 @@ package nhom7.fpoly.motoworld.Adapter;
 import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.content.Context;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,7 +17,6 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import java.text.NumberFormat;
 import java.util.ArrayList;
 
 import nhom7.fpoly.motoworld.Dao.HangxeDao;
@@ -59,8 +59,7 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, @SuppressLint("RecyclerView") int position) {
-        FragmentManager fragmentManager = ((FragmentActivity) context).getSupportFragmentManager();
-        NumberFormat numberFormat = NumberFormat.getNumberInstance();
+
         Sanpham sp = list.get(position);
 
         //Lấy dữ liệu ảnh lên recyclerview
@@ -75,13 +74,15 @@ public class SanPhamAdapter extends RecyclerView.Adapter<SanPhamAdapter.ViewHold
         holder.binding.tvHangsp.setText("Hãng:" + String.valueOf(hangxe != null ? hangxe.getTenhang() : ""));
 
         holder.binding.tvGiasp.setText("Giá:" + String.valueOf(sp.getGia()));
-//        if(sp.getTrangthai() ==1){
-//            holder.binding.tvTrangthai.setTextColor(Color.RED);
-//            holder.binding.tvTrangthai.setText("Chưa Bán");
-//        }else{
-//            holder.binding.tvTrangthai.setTextColor(Color.GREEN);
-//            holder.binding.tvTrangthai.setText("Chưa Bán");
-//        }
+
+        if(sp.getTrangthai()==1){
+            holder.binding.tvdangtin.setTextColor(Color.BLUE);
+            holder.binding.tvdangtin.setText("Đã Bán");
+        }else{
+            holder.binding.tvdangtin.setTextColor(Color.RED);
+            holder.binding.tvdangtin.setText("Chưa Bán");
+        }
+        dao.updateTrangThai(sp.getMasp(), sp.getTrangthai());
         holder.binding.btnedit.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

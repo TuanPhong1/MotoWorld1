@@ -10,9 +10,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
 
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 
@@ -58,10 +55,6 @@ public class CapNhatSanPhamFragment extends Fragment {
         list = new ArrayList<>();
         dao = new SanphamDao(getContext());
 
-        AppCompatActivity activity = (AppCompatActivity) getActivity();
-        activity.setSupportActionBar(binding.toolbarUpdate);
-        activity.getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        activity.getSupportActionBar().setTitle("Update Product");
 
         requireActivity().findViewById(R.id.bottom_nav).setVisibility(View.GONE);
 
@@ -113,6 +106,13 @@ public class CapNhatSanPhamFragment extends Fragment {
             item.setDongco(dongco);
             item.setNamsx(namsx);
 
+
+            if (binding.chkTtcapnhat.isChecked()) {
+                item.setTrangthai(1);
+            } else {
+                item.setTrangthai(0);
+            }
+
             String imagePath = getPathFromUri(selectUri);
             Log.d("TAG", "onClick: " + imagePath);
             item.setImage(imagePath);
@@ -157,14 +157,14 @@ public class CapNhatSanPhamFragment extends Fragment {
         return filePath;
     }
 
-    @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
-        super.onViewCreated(view, savedInstanceState);
-        binding.toolbarUpdate.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getFragmentManager().popBackStack();
-            }
-        });
-    }
+//    @Override
+//    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+//        super.onViewCreated(view, savedInstanceState);
+//        binding.toolbarUpdate.setNavigationOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                getFragmentManager().popBackStack();
+//            }
+//        });
+//    }
 }

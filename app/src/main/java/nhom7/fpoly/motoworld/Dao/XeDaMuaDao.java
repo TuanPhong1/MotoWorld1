@@ -11,34 +11,34 @@ import java.util.List;
 
 import nhom7.fpoly.motoworld.Database.DbHelper;
 import nhom7.fpoly.motoworld.Model.Sanpham;
-import nhom7.fpoly.motoworld.Model.YeuThich;
+import nhom7.fpoly.motoworld.Model.XeDaMua;
 
-public class YeuThichDao {
+public class XeDaMuaDao {
     private SQLiteDatabase db;
 
-    public YeuThichDao(Context context) {
+    public XeDaMuaDao(Context context) {
         DbHelper dbHelper = new DbHelper(context);
         db = dbHelper.getWritableDatabase();
     }
 
-    public long insert(YeuThich obj) {
+    public long insert(XeDaMua obj) {
         ContentValues values = new ContentValues();
         values.put("masp", obj.getMasp());
         values.put("matk", obj.getMatk());
-        return db.insert("YEUTHICH", null, values);
+        return db.insert("XEDAMUA", null, values);
     }
 
     public long delete(String id) {
-        return db.delete("YEUTHICH", "mayt = ?", new String[]{String.valueOf(id)});
+        return db.delete("XEDAMUA", "maxm = ?", new String[]{String.valueOf(id)});
     }
 
     @SuppressLint("Range")
-    private List<YeuThich> getData(String sql, String... selectionArgs) {
-        List<YeuThich> list = new ArrayList<>();
+    private List<XeDaMua> getData(String sql, String... selectionArgs) {
+        List<XeDaMua> list = new ArrayList<>();
         Cursor cursor = db.rawQuery(sql, selectionArgs);
         while (cursor.moveToNext()) {
-            YeuThich obj = new YeuThich();
-            obj.setMayt(Integer.parseInt(cursor.getString(cursor.getColumnIndex("mayt"))));
+            XeDaMua obj = new XeDaMua();
+            obj.setMaxm(Integer.parseInt(cursor.getString(cursor.getColumnIndex("maxm"))));
             obj.setMasp(Integer.parseInt(cursor.getString(cursor.getColumnIndex("masp"))));
             obj.setMatk(Integer.parseInt(cursor.getString(cursor.getColumnIndex("matk"))));
             list.add(obj);
@@ -52,8 +52,8 @@ public class YeuThichDao {
 
         String query = "SELECT SANPHAM.* " +
                 "FROM SANPHAM " +
-                "INNER JOIN YEUTHICH ON SANPHAM.masp = YEUTHICH.masp " +
-                "WHERE YEUTHICH.matk = ?";
+                "INNER JOIN XEDAMUA ON SANPHAM.masp = XEDAMUA.masp " +
+                "WHERE XEDAMUA.matk = ?";
 
         Cursor c = db.rawQuery(query, new String[]{String.valueOf(matknd)});
         while (c.moveToNext()){

@@ -112,16 +112,15 @@ public class DangtinFragment extends Fragment {
             item.setDongco(dongco);
             item.setNamsx(namsx);
 
+            if (binding.chkTtdangtin.isChecked()) {
+                item.setTrangthai(1);
+            } else {
+                item.setTrangthai(0);
+            }
+
             String imagePath = getPathFromUri(selectUri);
             Log.d("TAG", "onClick: " + imagePath);
             item.setImage(imagePath);
-
-            //chuyển data imageview sang mảng byte[]
-//                BitmapDrawable bitmapDrawable = (BitmapDrawable) binding.imgAnh.getDrawable();
-//                Bitmap bitmap = bitmapDrawable.getBitmap();
-//                ByteArrayOutputStream byteArray = new ByteArrayOutputStream();
-//                bitmap.compress(Bitmap.CompressFormat.PNG, 100, byteArray); //ép kiểu ảnh về png, độ phân giải ảnh mặc định 100 - cảng nhỏ hơn càng nét(1-100), dữ liệu truyền vào;
-//                byte[] hinhAnh = byteArray.toByteArray(); //mảng byte để chứa dữ liệu
 
             SharedPreferences pref = getActivity().getSharedPreferences("USER_FILE",Context.MODE_PRIVATE);
             String user = pref.getString("USERNAME","");
@@ -146,25 +145,6 @@ public class DangtinFragment extends Fragment {
                 Toast.makeText(getActivity(), "Thêm sản phẩm thất bại", Toast.LENGTH_SHORT).show();
             }
         });
-//        binding.btncamera.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                if (ContextCompat.checkSelfPermission(getContext(), Manifest.permission.CAMERA) != PackageManager.PERMISSION_GRANTED) {
-//                    ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.CAMERA}, REQUEST_CODE_CAMERA);
-//                } else {
-//                    // Mở camera ở đây
-//                    openCamera();
-//                }
-//            }
-//        });
-//        binding.btnlibrary.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//                Intent intent = new Intent(Intent.ACTION_PICK);
-//                intent.setType("image/*");
-//                startActivityForResult(intent, REQUEST_CODE_FOLDER);
-//            }
-//        });
         binding.imgAnh.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

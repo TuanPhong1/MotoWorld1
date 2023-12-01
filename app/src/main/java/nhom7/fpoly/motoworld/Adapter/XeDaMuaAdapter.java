@@ -1,15 +1,13 @@
 package nhom7.fpoly.motoworld.Adapter;
 
 import android.app.Activity;
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
+import android.graphics.Color;
 import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.ViewGroup;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
@@ -20,75 +18,76 @@ import androidx.recyclerview.widget.RecyclerView;
 import java.util.ArrayList;
 
 import nhom7.fpoly.motoworld.Dao.HangxeDao;
-import nhom7.fpoly.motoworld.Dao.YeuThichDao;
+import nhom7.fpoly.motoworld.Dao.XeDaMuaDao;
 import nhom7.fpoly.motoworld.Fragment.ChiTietSanPhamFragment;
-import nhom7.fpoly.motoworld.Fragment.FavoriteFragment;
 import nhom7.fpoly.motoworld.Model.Hangxe;
 import nhom7.fpoly.motoworld.Model.Sanpham;
 import nhom7.fpoly.motoworld.R;
-import nhom7.fpoly.motoworld.databinding.ItemFavoriteBinding;
+import nhom7.fpoly.motoworld.TaiKhoan.XeDaMua;
+import nhom7.fpoly.motoworld.databinding.ItemXedamuaBinding;
 
-public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHolder> {
+public class XeDaMuaAdapter extends RecyclerView.Adapter<XeDaMuaAdapter.ViewHolder> {
     Context context;
-    private ArrayList<Sanpham> list;
-    private Activity activity;
-    private FavoriteFragment fragment;
-    YeuThichDao yeuThichDao;
-    int matknd;
-
-    public FavoriteAdapter(Context context, ArrayList<Sanpham> list, Activity activity) {
+    private ArrayList<Sanpham> listsanpham;
+    private XeDaMua xeDaMua;
+    XeDaMuaDao xeDaMuaDao;
+    Activity activity;
+    public XeDaMuaAdapter(Context context, ArrayList<Sanpham> listsanpham, XeDaMua xeDaMua) {
         this.context = context;
-        this.list = list;
-        this.activity = activity;
+        this.listsanpham = listsanpham;
+        this.xeDaMua = xeDaMua;
     }
+
 
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        ItemFavoriteBinding binding = ItemFavoriteBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
-        return new ViewHolder(binding);
+        ItemXedamuaBinding binding = ItemXedamuaBinding.inflate(LayoutInflater.from(parent.getContext()), parent, false);
+        return new XeDaMuaAdapter.ViewHolder(binding);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Sanpham sp = list.get(position);
+        Sanpham sp = listsanpham.get(position);
 
         //Lấy dữ liệu ảnh lên recyclerview
         Uri imagesUri = Uri.parse(sp.getImage());
         Log.d("tag", "onBindViewHolder: " + imagesUri);
-        holder.binding.imgFavorite.setImageURI(imagesUri);
+        holder.binding.imgXedamua.setImageURI(imagesUri);
 
-        holder.binding.tvTenfavorite.setText("TênSP:" + sp.getTensp());
+        holder.binding.tvTenxedamua.setText("TênSP:" + sp.getTensp());
 
         HangxeDao hangxeDao = new HangxeDao(context);
         Hangxe hangxe = hangxeDao.getID(String.valueOf(sp.getMahang()));
-        holder.binding.tvHangfavorite.setText("Hãng:" + String.valueOf(hangxe.getTenhang()));
+        holder.binding.tvHangxedamua.setText("Hãng:" + String.valueOf(hangxe.getTenhang()));
 
-        holder.binding.tvGiafavorite.setText("Giá:" + String.valueOf(sp.getGia()));
+        holder.binding.tvGiaxedamua.setText("Giá:" + String.valueOf(sp.getGia()));
+
+        if(sp.getTrangthai()==1){
+            holder.binding.tvTtxedamua.setTextColor(Color.BLUE);
+            holder.binding.tvTtxedamua.setText("Đã Bán");
+        }else{
+            holder.binding.tvTtxedamua.setTextColor(Color.RED);
+            holder.binding.tvTtxedamua.setText("Chưa Bán");
+        }
 
         holder.binding.cardviewsp.setOnClickListener(view -> {
             openFragment(sp, holder.itemView.getContext());
         });
-        holder.binding.deleteFavorite.setOnClickListener(view -> {
-            xoa(sp.getMasp());
-        });
-
     }
 
     @Override
     public int getItemCount() {
-        return list.size();
+        return listsanpham.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder {
-        private ItemFavoriteBinding binding;
-
-        public ViewHolder(@NonNull ItemFavoriteBinding binding) {
-            super(binding.getRoot());
-            this.binding = binding;
-        }
-    }
-
+    public class ViewHolder extends RecyclerView.ViewHolder{
+        ItemXedamuaBinding binding;
+       public ViewHolder(@NonNull  ItemXedamuaBinding binding) {
+           super(binding.getRoot());
+           this.binding = binding;
+       }
+   }
     private void openFragment(final Sanpham sanPham, Context context) {
         if (context instanceof FragmentActivity) {
             FragmentActivity fragmentActivity = (FragmentActivity) context;
@@ -110,32 +109,5 @@ public class FavoriteAdapter extends RecyclerView.Adapter<FavoriteAdapter.ViewHo
                 fragmentTransaction.commit();
             }
         }
-    }
-
-    public void xoa(int id) {
-        AlertDialog.Builder builder = new AlertDialog.Builder(context);
-        builder.setTitle("Delete");
-        builder.setMessage("Bạn có muốn xóa không?");
-        builder.setCancelable(true);
-
-        builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                yeuThichDao.delete(String.valueOf(id));
-                list.clear();
-                list.addAll(yeuThichDao.getSanPhamInGioHangByMatkd(matknd));
-                notifyDataSetChanged();
-                dialog.cancel();
-                Toast.makeText(context, "", Toast.LENGTH_SHORT).show();
-            }
-        });
-        builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
-            @Override
-            public void onClick(DialogInterface dialog, int which) {
-                dialog.cancel();
-            }
-        });
-        AlertDialog alert = builder.create();
-        builder.show();
     }
 }

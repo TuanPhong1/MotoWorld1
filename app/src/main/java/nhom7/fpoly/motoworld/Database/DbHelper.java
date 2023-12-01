@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DbHelper extends SQLiteOpenHelper {
     public DbHelper(@Nullable Context context) {
-        super(context, "Motowoowwww", null, 2);
+        super(context, "Motowoowwwwao", null, 1);
     }
 
     @Override
@@ -16,7 +16,7 @@ public class DbHelper extends SQLiteOpenHelper {
 
         String tbHangXe = "create table HANGXE(mahang integer primary key autoincrement,tenhang text)";
         sqLiteDatabase.execSQL(tbHangXe);
-        String tbSanPham = "create table SANPHAM(masp integer primary key autoincrement,mahang integer references HANGXE(mahang),matk integer references TKNGUOIDUNG(matk),tensp text,gia integer,loaixe text,mauxe text,namsx integer,dongco text,images text,mand integer references NGUOIDUNG(mand))";
+        String tbSanPham = "create table SANPHAM(masp integer primary key autoincrement,mahang integer references HANGXE(mahang),matk integer references TKNGUOIDUNG(matk),tensp text,gia integer,loaixe text,mauxe text,namsx integer,dongco text,images text,mand integer references NGUOIDUNG(mand),trangthai integer)";
         sqLiteDatabase.execSQL(tbSanPham);
         String tbNguoiDung = "create table NGUOIDUNG(mand integer primary key autoincrement,tennd text,namsinh text,gioitinh text,sdt text,diachi text,matk integer references TKNGUOIDUNG(matk))";
         sqLiteDatabase.execSQL(tbNguoiDung);
@@ -24,6 +24,10 @@ public class DbHelper extends SQLiteOpenHelper {
         sqLiteDatabase.execSQL(tbTaiKhoanND);
         String yeuthich = "create table YEUTHICH(mayt integer primary key autoincrement,masp integer references SANPHAM(masp) ,matk integer references TKNGUOIDUNG(matk))";
         sqLiteDatabase.execSQL(yeuthich);
+        String xedamua = "create table XEDAMUA(maxm integer primary key autoincrement,masp integer references SANPHAM(masp) ,matk integer references TKNGUOIDUNG(matk))";
+        sqLiteDatabase.execSQL(xedamua);
+        String xedangban = "create table XEDANGBAN(maxb integer primary key autoincrement,masp integer references SANPHAM(masp) ,matk integer references TKNGUOIDUNG(matk))";
+        sqLiteDatabase.execSQL(xedangban);
 
         sqLiteDatabase.execSQL("insert into HANGXE values(1,'Honda'),(2,'Ducati'),(3,'Yamaha'),(4,'Suzuki')");
         sqLiteDatabase.execSQL("insert into TKNGUOIDUNG values(1,'admin','admin'),(2,'chien','1')") ;

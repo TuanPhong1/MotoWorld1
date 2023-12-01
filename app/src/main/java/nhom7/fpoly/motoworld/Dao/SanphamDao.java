@@ -35,7 +35,7 @@ public class SanphamDao {
         values.put("namsx",obj.getNamsx());
         values.put("dongco",obj.getDongco());
         values.put("images",obj.getImage());
-//        values.put("trangthai",obj.getTrangthai());
+        values.put("trangthai",obj.getTrangthai());
         return db.insert("SANPHAM",null,values);
     }
     public int update(Sanpham obj){
@@ -48,7 +48,7 @@ public class SanphamDao {
         values.put("namsx",obj.getNamsx());
         values.put("dongco",obj.getDongco());
         values.put("images",obj.getImage());
-//        values.put("trangthai",obj.getTrangthai());
+        values.put("trangthai",obj.getTrangthai());
         return db.update("SANPHAM",values,"masp=?",new String[]{String.valueOf(obj.getMasp())});
     }
     public int delete(String id){
@@ -71,7 +71,7 @@ public class SanphamDao {
             sp.setNamsx(c.getInt(c.getColumnIndex("namsx")));
             sp.setImage(c.getString(c.getColumnIndex("images")));
             sp.setDongco(c.getString(c.getColumnIndex("dongco")));
-//            sp.setTrangthai(c.getInt(c.getColumnIndex("trangthai")));
+            sp.setTrangthai(c.getInt(c.getColumnIndex("trangthai")));
             list.add(sp);
         }
         return list;
@@ -89,5 +89,18 @@ public class SanphamDao {
         String sql = "SELECT * FROM SANPHAM WHERE matk = ?";
         String[] selectionArgs = {String.valueOf(matk)};
         return getdata(sql, selectionArgs);
+    }
+    public void updateTrangThai(int id, int trangthai) {
+        SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+        ContentValues values = new ContentValues();
+        values.put("trangthai", trangthai);
+
+        String selection = "masp = ?";
+        String[] selectionArgs = { String.valueOf(id) };
+
+        int count = db.update("SANPHAM", values, selection, selectionArgs);
+
+        db.close();
     }
 }

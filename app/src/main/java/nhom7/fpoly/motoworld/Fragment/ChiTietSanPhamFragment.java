@@ -47,7 +47,8 @@ TkNguoiDungDao ndDao;
 SanphamDao sanphamDao;
 YeuThichDao yeuThichDao;
 private boolean isFavorite = false;
-private SharedPreferences pref,sharedPreferences;
+private boolean isLoggedIn = false;
+    private SharedPreferences pref,sharedPreferences;
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -134,14 +135,8 @@ private SharedPreferences pref,sharedPreferences;
 
             int matknd = ndDao.getMatkndFromTkNguoiDung(user, pass);
 
-//            sharedPreferences = requireContext().getSharedPreferences("MyPrefs", Context.MODE_PRIVATE);
-//            String tenND = sharedPreferences.getString("tenND", "");
-//            String namSinh = sharedPreferences.getString("namSinh", "");
-//            String gioiTinh = sharedPreferences.getString("gioiTinh", "");
-//            String sdt = sharedPreferences.getString("sdt", "");
-//            String diaChi = sharedPreferences.getString("diaChi", "");
+// Kiểm tra xem người dùng đã đăng nhập hay chưa
 
-//            int mand = nguoiDungDao.getMandFromNguoiDung(tenND,namSinh,gioiTinh,sdt,diaChi);
 
             Log.d("linh", "onCreateView: " + matknd);
             YeuThich yeuThich = new YeuThich();
