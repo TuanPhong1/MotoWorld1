@@ -27,7 +27,7 @@ public class ThongTinUserDialog extends DialogFragment {
         fragment.setArguments(args);
         return fragment;
     }
-//bbb
+//nnnn
     @NonNull
     @Override
     public Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
